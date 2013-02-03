@@ -1,8 +1,2 @@
 1.0 - 1.14.13 
 ----------------------
-- initial release
-
-1.0.1 - 1.27.13
-----------------------
-- testing auto updater to automatically push updates for private themes
-- if footer menu is not populated, it won't show in footer

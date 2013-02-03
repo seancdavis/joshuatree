@@ -181,19 +181,6 @@ function get_feature_image() {
 
 }
 
-/* Social Icons
------------------------------------------------------------------------- */
-add_action( 'rt_display_social_icons', 'rt_display_social_icons' );
-
-function rt_display_social_icons() {
-	
-	if( rt_get_option('rt_facebook') != '' ) { _e( '<a href="' . rt_get_option('rt_facebook') . '" target="_blank"><img src="' . get_template_directory_uri() . '/images/facebook-24.png" /></a>' ); }
-				if( rt_get_option('rt_twitter') != '' ) { _e( '<a href="' . rt_get_option('rt_twitter') . '" target="_blank"><img src="' . get_template_directory_uri() . '/images/twitter-24.png" /></a>' ); }
-				if( rt_get_option('rt_linkedin') != '' ) { _e( '<a href="' . rt_get_option('rt_linkedin') . '" target="_blank"><img src="' . get_template_directory_uri() . '/images/linkedin-24.png" /></a>' ); }
-				if( rt_get_option('rt_pinterest') != '' ) { _e( '<a href="' . rt_get_option('rt_pinterest') . '" target="_blank"><img src="' . get_template_directory_uri() . '/images/pinterest-24.png" /></a>' ); }
-	
-}
-
 /* displays main menu as a dropdown list --- click directs you to that page.
 ------------------------------------------------------------------------ */
 add_action( 'get_main_menu_as_dropdown', 'get_main_menu_as_dropdown' );

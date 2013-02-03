@@ -41,7 +41,7 @@
     
     <div id="header" class="clearfix">
     
-    	<div id="social-icons-container" class="clearfix"><?php do_action( 'rt_display_social_icons' ); // library/content/content.php ?></div>
+    	<div id="social-icons-container" class="clearfix"><?php echo rt_get_social_icons(); // library/content/social-media.php ?></div>
         
         <div id="logo">        	
             <h2><a href="<?php echo get_option('home'); ?>"><?php if( rt_get_option('rt_logo') != '' ) { echo '<img src="' . rt_get_option('rt_logo') . '" style="max-width: ' . rt_get_option('rt_logo_width') . 'px; max-height:' . rt_get_option('rt_logo_height') . 'px;" />'; }
