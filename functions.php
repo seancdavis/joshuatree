@@ -16,6 +16,7 @@ function rocktree_load_functions() {
 	// content
 	require_once( RT_LIBRARY_DIR . '/content/content.php' );
 	require_once( RT_LIBRARY_DIR . '/content/sidebars.php' );
+	require_once( RT_LIBRARY_DIR . '/content/styles.php' );
 	
 	// plugins
 	require_once( RT_LIBRARY_DIR . '/plugins/features/features.php' ); // all other feature functions are called from features.php

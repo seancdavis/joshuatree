@@ -20,7 +20,7 @@ function rt_get_option( $option_name ) {
 	$defaults = array(
 		'rt_options_menu_control' => 'rt-global-options',
 		'rt_css' => '/* Add your custom CSS here: */',
-		'rt_header_font' => 'Helvetica',
+		'rt_headings_font' => 'Helvetica',
 		'rt_body_font' => 'Helvetica',
 		'rt_logo' => '',
 		'rt_logo_width' => '200',
@@ -89,14 +89,14 @@ function rt_options_page() { ?>
 						
 			<ul id="rt-options-menu">
 				<li class="rt-global-options">Global</li>
-				<li class="rt-header-options">Logo</li>
+				<li class="rt-headings-options">Logo</li>
 				<li class="rt-blog-options">Blog/News</li>
 				<li class="rt-social-options">Social</li>
 			</ul>
 			
 			<?php settings_fields('rt_options'); ?>
 			<div class="rt-settings-section" id="rt-global-options"><?php do_settings_sections('rt_global_options'); ?></div>
-			<div class="rt-settings-section" id="rt-header-options"><?php do_settings_sections('rt_header_options'); ?></div>
+			<div class="rt-settings-section" id="rt-headings-options"><?php do_settings_sections('rt_headings_options'); ?></div>
 			<div class="rt-settings-section" id="rt-blog-options"><?php do_settings_sections('rt_blog_options'); ?></div>
 			<div class="rt-settings-section" id="rt-social-options"><?php do_settings_sections('rt_social_options'); ?></div>			
          	<div class="rt-settings-section" id="rt-submit-options"><?php submit_button( 'Save All Theme Options' ); ?></div>
@@ -143,15 +143,15 @@ function rt_admin_init(){
 		'rt_global_options', 			// Page (page on which to display the content)
 		'rt_global'						// Section (ref ID of section to attach field)
 	);	
-	add_settings_field('rt_header_font', 'Header Font', 'rt_field_header_font', 'rt_global_options', 'rt_global');
+	add_settings_field('rt_headings_font', 'Header Font', 'rt_field_headings_font', 'rt_global_options', 'rt_global');
 	add_settings_field('rt_body_font', 'Body Font', 'rt_field_body_font', 'rt_global_options', 'rt_global');
 	
-	/* Header Settings (rt_header)
+	/* Header Settings (rt_headings)
 	-------------------------------- */
-	add_settings_section( 'rt_header', 'Header Settings', 'rt_section_header', 'rt_header_options' );	
-	add_settings_field('rt_logo', 'Custom Logo (replaces site title)', 'rt_field_logo', 'rt_header_options', 'rt_header');
-	add_settings_field('rt_logo_width', 'Max. Logo Width', 'rt_field_logo_width', 'rt_header_options', 'rt_header');
-	add_settings_field('rt_logo_height', 'Max. Logo Height', 'rt_field_logo_height', 'rt_header_options', 'rt_header');
+	add_settings_section( 'rt_headings', 'Header Settings', 'rt_section_headings', 'rt_headings_options' );	
+	add_settings_field('rt_logo', 'Custom Logo (replaces site title)', 'rt_field_logo', 'rt_headings_options', 'rt_headings');
+	add_settings_field('rt_logo_width', 'Max. Logo Width', 'rt_field_logo_width', 'rt_headings_options', 'rt_headings');
+	add_settings_field('rt_logo_height', 'Max. Logo Height', 'rt_field_logo_height', 'rt_headings_options', 'rt_headings');
 	
 	/* Blog/News Settings (rt_blog)
 	-------------------------------- */
@@ -180,8 +180,8 @@ function rt_field_css() {
 	_e( "<textarea id='rt_logo' name='rt_options[rt_css]' style='width: 300px; height: 200px;'>" . rt_get_option( 'rt_css' ) . "</textarea>" );
 }
 
-function rt_field_header_font() {
-	$rt_header_fonts = array(
+function rt_field_headings_font() {
+	$rt_headings_fonts = array(
 		'Arial',
 		'Arvo',
 		'Georgia',
@@ -198,13 +198,13 @@ function rt_field_header_font() {
 		'Vollkorn'
 	);
 	
-	_e( "<select id='rt_font' name='rt_options[rt_header_font]'>" );
+	_e( "<select id='rt_font' name='rt_options[rt_headings_font]'>" );
 	
-	foreach( $rt_header_fonts as $rt_header_font ) {
+	foreach( $rt_headings_fonts as $rt_headings_font ) {
 		$selected = '';
-		if( rt_get_option( 'rt_header_font' ) == $rt_header_font ) { $selected = "selected='selected'"; }
+		if( rt_get_option( 'rt_headings_font' ) == $rt_headings_font ) { $selected = "selected='selected'"; }
 		
-		_e( "<option value='" . $rt_header_font . "' " . $selected . ">" . $rt_header_font . "</option>" );
+		_e( "<option value='" . $rt_headings_font . "' " . $selected . ">" . $rt_headings_font . "</option>" );
 	}
 	
 	_e( "</select>" );
@@ -240,10 +240,10 @@ function rt_field_body_font() {
 	_e( "</select>" );
 }
 
-/* Header Settings Callback Functions (rt_header) 
+/* Header Settings Callback Functions (rt_headings) 
 -------------------------------------------------- */
-function rt_section_header() {
-	_e( '<p>This section will help customize your site&#39;s header.</p>' );
+function rt_section_headings() {
+	_e( '<p>This section will help customize your site&#39;s headings.</p>' );
 }
 
 function rt_field_logo() {	?>

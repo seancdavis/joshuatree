@@ -1,12 +1,12 @@
 /*
-Theme Name: Buckeye
-Theme URI: http://thepolymathlab.com
-Description: A basic theme with widgets and plugins. Good for both professional corporate sites as well as personal blogs and sites.
+Theme Name: Joshua Tree
+Theme URI:
+Description:
 Author: rocktree Design
-Author URI: http://thepolymathlab.com
-Version: 1.0.1
-Tags: responsive, right sidebar, widgets, home widgets, feature slider, custom header, custom menu
-Release Date: 1/14/13
+Author URI:
+Version: (sprint)
+Tags: 
+Release Date: not released
 
 TABLE OF CONTENTS
 ---------------------------------------
@@ -41,7 +41,6 @@ body {
 	margin: 0;
 	padding: 0;
 	color: #555;
-	background: url(images/bkg-3.png) repeat center;
 }
 
 h1, h2, h3, h4 {
@@ -240,7 +239,7 @@ html[xmlns] .clearfix {
 }
 
 /* --------------------------------------
-	=HEADERS 
+	=HEADER
 ---------------------------------------*/
 #header {
 	width: 100%;
@@ -253,20 +252,34 @@ html[xmlns] .clearfix {
 	text-decoration: none;
 }
 
-#logo {
-	margin: 20px 5%;
-	height: 40px;
+#social-icons-container {
+	float: left;
+	width: 80%;
+	padding: 0 10%;
+	background-color: #163C6E;
+	height: 44px;
 }
 
-#social-icons {
-	float: right;
-	margin: 20px 75px 0 0;
-}
-
-#social-icons img {
+#social-icons-container img {
 	width: 24px;
 	height: 24px;
-	margin: 0 0 0 10px;
+	padding: 10px;
+	background-color: transparent;
+	float: right;
+}
+
+#social-icons-container a:hover > img {
+	background-color: #737373;
+}
+
+#logo {
+	width: 80%;
+	margin: auto;
+}
+
+#logo h2, #logo img {
+	float: left;
+	padding: 20px 0;
 }
 
 #feature-image-container {
@@ -294,13 +307,11 @@ html[xmlns] .clearfix {
 }
 
 #main-menu {
-	width: 90%;
 	background-color: transparent;
 	display: block;
 	position: relative;
 	padding: 0;
-	margin: 20px 0 0 5%;
-	border-bottom: 1px solid #555;
+	float: right;
 }
  
 .main-menu {
@@ -313,7 +324,6 @@ html[xmlns] .clearfix {
 .main-menu li {
 	float: left;
 	position: relative;
-	min-width: 75px;
 }
 
 .main-menu a {
@@ -322,38 +332,35 @@ html[xmlns] .clearfix {
 	color: #555;
 	font-size: 14px; 
 	font-weight: bold;
-	padding: 10px;
+	padding: 25px;
+	border-top: 3px solid #fff;
+	border-bottom: 1px solid #ccc;
 }
 
-.main-menu ul li:last-child {
-	border: none;
-}
-
+/* Sub-Menus */	
 .sub-menu {
 	padding: 0;
 	margin: 0;
 }
 
-/* Level 1 */	
 .main-menu ul {
 	position: absolute;
 	z-index: 99999;
 	list-style-type: none;
 	margin: 0;
 	display: none;
-	background: #fff;
-	border: 1px solid #ccc;
-	border-top: #5f85b0 5px solid;
-}
-
-/* Sub-Menus */	
-.main-menu ul li a, .main-menu ul ul li a {
-	padding: 10px;	
-	min-width: 150px;
 }
 
 .main-menu ul li {
-	border-bottom: 1px solid #ccc;
+	min-width: 175px;
+}
+
+.main-menu ul li a, .main-menu ul ul li a {
+	padding: 10px;
+	border-top: none;
+	border-bottom: none;
+	background: #132275;
+	color: #efefef !important;
 }
 
 #main-menu ul ul li a {
@@ -366,19 +373,20 @@ html[xmlns] .clearfix {
 	top: 0;
 }
 
-/* Current Menu Item */
-.current-menu-item, .current-menu-item a {
-	color: #5f85b0;
-}
-
 /* Hover Control */
-#main-menu li a:hover {
-	color: #5f85b0;
+#main-menu li a:hover, .current-menu-item a {
+	background: #F0F2F5; 
+	border-top: 3px solid #F2B705;
 }
 
 #main-menu ul ul li a:hover {
-	background: #efefef;
-	color: #5f85b0;
+	background: #F2B705;
+}
+
+#main-menu ul ul li a:hover {
+	border-top: none;
+	background: #F2B705;
+	color: #fff !important;
 }
  
 .main-menu li:hover > ul {
@@ -390,7 +398,8 @@ html[xmlns] .clearfix {
 }
 
 .main-menu-parent_hover a {
-	color: #5f85b0; /* connected to hover-control.js */
+	background: #F0F2F5; /* connected to hover-control.js */
+	border-top: 3px solid #F2B705;
 }
 
 .main-menu-parent_hover ul li a {
