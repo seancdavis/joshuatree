@@ -31,9 +31,12 @@ class Twitter_Feed extends WP_Widget {
 
 		if ( $handle ) {
 			
-			?><ul id="twitter_update_list"><li>Twitter feed loading</li></ul><?php
+			?>
+			<img id="twitter-feed-icon" src="<?php echo get_template_directory_uri() . '/images/icons/twitter-grey.png'; ?>">
+			<h2 id="twitter-feed-title"><a href="http://twitter.com/<?php echo $handle; ?>" target="_blank">@<?php echo $handle; ?></a></h2>			
+			<ul id="twitter_update_list"></ul>
 			
-			load_twitter_scripts( $handle, $tweets );
+			<?php load_twitter_scripts( $handle, $tweets );
 			
 		}
 		
@@ -85,7 +88,7 @@ class Twitter_Feed extends WP_Widget {
 }
 
 function load_twitter_scripts( $handle, $tweets ) {
-	wp_enqueue_script( 'twitter-blogger', 'http://twitter.com/javascripts/blogger.js', array('jquery') );
+	wp_enqueue_script( 'twitter-blogger', get_template_directory_uri() . '/library/js/twitter-blogger.js', array('jquery') );
 	wp_enqueue_script( 'twitter-blogger-feed', 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=' . $handle . '&include_rts=1&callback=twitterCallback2&count=' . $tweets, array('jquery') );
 }
 

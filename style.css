@@ -17,7 +17,9 @@ TABLE OF CONTENTS
 =MENUS
 	-Main
 	-Footer
-=WIDGETS (general) --> specific widget styling is in library/widgets/widgets.css
+=WIDGET AREAS --> specific widget styling is in library/widgets/widgets.css
+	-Global
+	-Footer
 =FOOTER
 =RESPONSIVE DESIGN
 
@@ -407,6 +409,11 @@ html[xmlns] .clearfix {
 
 /*	-Footer
 ------------------*/
+#footer-menu {
+	border-bottom: 1px solid #474747;
+	width: 100%;
+}
+
 #menu-footer {
 	margin: 0 0 0 -10px;
 }
@@ -415,7 +422,7 @@ html[xmlns] .clearfix {
 	list-style: none;
 	float: left;
 	padding: 0 10px;
-	margin: 10px 0;
+	margin: 5px 0 10px 0;
 	border-right: 1px solid #555;
 }
 
@@ -436,9 +443,17 @@ html[xmlns] .clearfix {
 	display: none; /* hides sub-menus */
 }
 
+#footer-menu .current-menu-item a {
+	background-color: transparent;
+	border: none;
+}
+
 /* --------------------------------------
-	=WIDGETS
+	=WIDGET AREAS
 ---------------------------------------*/
+
+/*	-Global
+------------------*/
 .widget {
 	width: 100%;
 	padding: 20px;
@@ -456,7 +471,7 @@ html[xmlns] .clearfix {
 	line-height: 16px;
 	font-size: 14px;
 	padding: 12px 0;
-	border-bottom: 1px dashed #ccc;
+	border-bottom: 1px dashed #8a8a8a;
 	list-style: none;
 }
 
@@ -468,6 +483,67 @@ html[xmlns] .clearfix {
 	clear: both;
 }
 
+/*	-Footer
+------------------*/
+#footer-sidebar-container {
+	width: 80%;
+	margin: -2px 0;
+	clear: both;
+	position: relative;
+	padding: 0 10%;
+	-moz-box-shadow: 3px -3px 5px #ccc;
+	-webkit-box-shadow: 3px -3px 5px #ccc; 
+	box-shadow: 3px -3px 5px #ccc; 
+	color: #ababab;
+	background: #444444;
+	font-size: 11px;
+}
+
+.footer-widget {
+	width: 30%;
+	float: left;
+	margin: 10px 1.5%;
+}
+
+.footer-widget-title {
+	font-weight: normal;
+	font-size: 20px;
+}
+
+.footer-widget ul {
+	margin: 0;
+}
+
+.footer-widget p {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+.footer-widget img {
+	width: 100px;
+	float: left;
+	margin: 0 10px 0 0;
+	padding: 8px;
+	border: 5px solid #ccc;
+	clear: both;
+}
+
+.footer-widget ul li {
+	line-height: 16px;
+	font-size: 12px;
+	padding: 12px 0;
+	border-bottom: 1px dashed #7D8084;
+	list-style: none;
+}
+
+.footer-widget a {
+	color: #7D8084;
+}
+
+.footer-widget ul li:last-child {
+	border: none;
+}
+
 /* ---------------------------------------
 	=FOOTER
 ---------------------------------------*/
@@ -477,12 +553,15 @@ html[xmlns] .clearfix {
 	clear: both;
 	position: relative;	
 	float: left;
-	padding: 10px 10%;
-	-moz-box-shadow: 3px -3px 5px #ccc;
-	-webkit-box-shadow: 3px -3px 5px #ccc; 
-	box-shadow: 3px -3px 5px #ccc; 
+	padding: 15px 10%;
+	line-height: 20px;
+	-moz-box-shadow: 0 -3px 5px #444444; 
+	-webkit-box-shadow: 0 -3px 5px #444444;  
+	box-shadow: 0 -3px 5px #444444; 
+	z-index: 10;
 	color: #8a8a8a;
 	background: #191919;
+	font-size: 11px;
 }
 
 #footer a {
@@ -491,9 +570,7 @@ html[xmlns] .clearfix {
 }
 
 #site-info {
-	font-size: 11px;
-	height: 20px;
-	padding: 0;
+	padding: 10px 0;
 }
 
 #copyright {
