@@ -25,6 +25,7 @@ function rocktree_load_functions() {
 	// widgets
 	require_once( RT_LIBRARY_DIR . '/widgets/info-tile.php' );
 	require_once( RT_LIBRARY_DIR . '/widgets/social-links.php' );
+	require_once( RT_LIBRARY_DIR . '/widgets/twitter-feed.php' );
 	
 }
 
@@ -79,6 +80,7 @@ function load_main_menu_scripts() {
 	wp_enqueue_script('hover-control', get_template_directory_uri() . '/library/js/hover-control.js',array('jquery') );
 	wp_enqueue_script('footer', get_template_directory_uri() . '/library/js/footer.js',array('jquery') );
 	wp_enqueue_script('main-menu', get_template_directory_uri() . '/library/js/main-menu.js',array('jquery') );
+	wp_enqueue_style('widgets', get_template_directory_uri() . '/library/widgets/widgets.css' );
 }
 
 // Admin scripts. These only run when on admin site.
@@ -98,13 +100,16 @@ add_action( 'widgets_init', 'load_widgets' );
 function load_widgets() {
 	register_widget( 'Info_Tile' );
 	register_widget( 'Social_Links' );
+	register_widget( 'Twitter_Feed' );
 }
 
 //Initialize the update checker.
+/*
 require get_template_directory() . '/library/admin/theme-update-checker.php';
 $example_update_checker = new ThemeUpdateChecker(
     'buckeye',
     'http://thepolymathlab.com/theme-updates/buckeye-theme-update-checker.json'
 );
+*/
 
 ?>

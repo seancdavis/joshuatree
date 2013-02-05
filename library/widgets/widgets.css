@@ -1,0 +1,142 @@
+/* --------------------------------------
+	=FRONT
+---------------------------------------*/
+#front-widget-container {
+	clear: both;
+	width: 90%;
+	margin: auto;
+}
+
+.front-widget {
+	width: 30%;
+	float: left;
+	margin: 20px 1.5%;
+}
+
+.front-widget ul {
+	margin: 0;
+}
+
+.front-widget p {
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.front-widget img {
+	width: 100px;
+	float: left;
+	margin: 0 10px 0 0;
+	padding: 8px;
+	border: 5px solid #fff;
+	box-shadow: 1px 1px 5px #ccc;
+	clear: both;
+}
+
+.front-widget ul li {
+	line-height: 16px;
+	font-size: 14px;
+	padding: 12px 0;
+	border-bottom: 1px dashed #ccc;
+	list-style: none;
+}
+
+.front-widget ul li:last-child {
+	border: none;
+}
+
+/* --------------------------------------
+	=FOOTER
+---------------------------------------*/
+#footer-sidebar-container {
+	clear: both;
+	width: 100%;
+	margin: auto;
+}
+
+.footer-widget {
+	width: 30%;
+	float: left;
+	margin: 10px 1.5%;
+}
+
+.footer-widget-title {
+	font-weight: normal;
+	font-size: 20px;
+}
+
+.footer-widget ul {
+	margin: 0;
+}
+
+.footer-widget p {
+	font-size: 14px;
+	line-height: 18px;
+}
+
+.footer-widget img {
+	width: 100px;
+	float: left;
+	margin: 0 10px 0 0;
+	padding: 8px;
+	border: 5px solid #fff;
+	box-shadow: 1px 1px 5px #ccc;
+	clear: both;
+}
+
+.footer-widget ul li {
+	line-height: 16px;
+	font-size: 14px;
+	padding: 12px 0;
+	border-bottom: 1px dashed #ccc;
+	list-style: none;
+}
+
+.footer-widget ul li:last-child {
+	border: none;
+}
+
+/* --------------------------------------
+	=SOCIAL
+---------------------------------------*/
+.social-link {
+	height: 32px;
+	display: block;
+	font-size: 14px;
+	margin: 20px 0 0 0;
+}
+
+.social-link img {
+	width: 32px;
+	border: 0;
+	padding: 0;
+}
+
+.social-widget-text {
+	float: left;
+	margin: 8px 0 0 0;
+}
+
+.social-link:hover > span {
+	text-decoration: underline;
+}
+
+/* --------------------------------------
+	=TWITTER FEED
+---------------------------------------*/
+#twitter_update_list {
+	font-size: 13px;
+	line-height: 21px;
+	list-style: none;
+	}
+#twitter_update_list li {
+	background: url('images/twitter-divider.gif') bottom left repeat-x;
+	padding-bottom: 7px;
+	margin-bottom: 9px;
+	}
+#twitter_update_list span, #twitter_update_list span a {
+	color: #ababab;
+	text-decoration: none;
+	}
+#twitter_update_list a {
+	color: #6f7276;
+	}
