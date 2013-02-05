@@ -8,7 +8,7 @@ jQuery(document).ready(function($) {
 	if( wrapper_height < (window_height - 250) ) {		
 		$('#footer').css('position','absolute');
 		$('#footer').css('bottom','0px');
-		$('#footer').css('left','5%');
+		$('#footer').css('left','0');
 	}
 	
 	$(window).resize(function() {
@@ -18,7 +18,7 @@ jQuery(document).ready(function($) {
 		if( wrapper_height < (window_height - 250) ) {		
 			$('#footer').css('position','absolute');
 			$('#footer').css('bottom','0px');
-			$('#footer').css('left','5%');
+			$('#footer').css('left','0');
 		}
 		else {
 			$('#footer').css('position','relative');
