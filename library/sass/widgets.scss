@@ -75,29 +75,27 @@
 #twitter_update_list {
 	line-height: 21px;
 	list-style: none;
+	li {
+		padding-bottom: 7px;
+		margin-bottom: 9px;
+	}
+	a {
+		color: lighten($primary, 50%);
+	}
+	span {
+		color: #ababab;
+		text-decoration: none;
+		a {
+			color: lighten($primary, 50%);
+		}
+	}
 }
 
 #twitter-feed-title a {
 	text-decoration: none;
-}
-
-#twitter-feed-title a:hover {
-	text-decoration: underline;
-}
-
-#twitter_update_list li {
-	background: url('images/twitter-divider.gif') bottom left repeat-x;
-	padding-bottom: 7px;
-	margin-bottom: 9px;
-}
-
-#twitter_update_list span, #twitter_update_list span a {
-	color: #ababab;
-	text-decoration: none;
-}
-
-#twitter_update_list a {
-	color: #6f7276;
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 #twitter-feed-icon {
