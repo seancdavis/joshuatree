@@ -124,7 +124,7 @@ function the_loop($page, $plugin) {
 							}
 							elseif( is_page() || is_single() ) {
 								the_content();
-								if( is_page() ) { edit_post_link('Edit Page'); }
+								//if( is_page() ) { edit_post_link('Edit Page'); } this is getting in the way of some shortcodes. It'd be nice to put it with an icon maybe near the top of the page.
 							}
 						?>
                         

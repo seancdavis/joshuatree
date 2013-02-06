@@ -22,6 +22,9 @@ function rocktree_load_functions() {
 	// plugins
 	require_once( RT_LIBRARY_DIR . '/plugins/features/features.php' ); // all other feature functions are called from features.php
 	
+	// shortcodes
+	require_once( RT_LIBRARY_DIR . '/shortcodes/shortcodes.php' );
+	
 	// widgets
 	require_once( RT_LIBRARY_DIR . '/widgets/info-tile.php' );
 	require_once( RT_LIBRARY_DIR . '/widgets/social-links.php' );
