@@ -28,7 +28,7 @@ TABLE OF CONTENTS
 ----------------------*/
 /* Colors */
 $primary: #000000;
-$accent-1: #1C4B11;
+$accent-1: #009b77;
 $shadow: #CCCCCC;
 
 @mixin gradient( $bottom-color: $primary, $top-color: lighten($primary, 25%) ) {
@@ -94,7 +94,7 @@ p {
 
 a {
 	text-decoration: none;
-	color: lighten($accent-1, 10%);
+	color: $accent-1;
 	&:hover {
 		text-decoration: underline;
 	}
@@ -302,8 +302,7 @@ html[xmlns] .clearfix {
 		display: block;
 		text-decoration :none;
 		color: $accent-1;
-		font-size: 14px; 
-		font-weight: bold;
+		font-size: 15px; 
 		padding: 20px 30px;
 		border-bottom: 1px solid lighten($primary, 80%);
 	}
