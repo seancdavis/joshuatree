@@ -3,25 +3,44 @@
 add_shortcode( 'column', 'build_column_shortcode' );
 
 function build_column_shortcode( $atts, $content = null ) {
-   extract( shortcode_atts( array(
-      'number' => '1-2',
-	  'new_line' => false
-      ), $atts ) );
+	extract( shortcode_atts( array(
+		'col' => '1-2',
+		'new_line' => false
+	), $atts ) );
  
- 	 if( $new_line == false ) return '<div class="col-' . esc_attr($number) . ' rt-col">' . do_shortcode($content) . '</div>';
-	 else return '<div class="col-' . esc_attr($number) . ' rt-col" style="clear:both;">' . do_shortcode($content) . '</div>';
+	if( $new_line == false ) return '<div class="col-' . esc_attr($col) . ' rt-col">' . do_shortcode($content) . '</div>';
+	else return '<div class="col-' . esc_attr($col) . ' rt-col" style="clear:both;">' . do_shortcode($content) . '</div>';
 }
 
 add_shortcode( 'tile', 'build_tile_shortcode' );
 
 function build_tile_shortcode( $atts, $content = null ) {
-   extract( shortcode_atts( array(
-      'number' => '1-2',
-	  'new_line' => false
-      ), $atts ) );
- 
- 	 if( $new_line == false ) return '<div class="tile-' . esc_attr($number) . ' rt-tile">' . do_shortcode($content) . '</div>';
-	 else return '<div class="tile-' . esc_attr($number) . ' rt-tile" style="clear:both;">' . do_shortcode($content) . '</div>';
+	extract( shortcode_atts( array(
+		'type' => 'normal',
+		'col' => '1-2',
+		'new_line' => false
+	), $atts ) );
+	
+	switch($type) {
+		
+		case 'icon' :
+			return '<div class="tile-' . esc_attr($col) . ' rt-tile rt-tile-icon">' . do_shortcode($content) . '</div>';
+			break;
+			
+		case 'thumb' || 'thumbnail' :
+			return '<div class="tile-' . esc_attr($col) . ' rt-tile rt-tile-thumb">' . do_shortcode($content) . '</div>';
+			break;
+			
+		case 'normal' :
+			return '<div class="tile-' . esc_attr($col) . ' rt-tile">' . do_shortcode($content) . '</div>';
+			break;
+			
+		default :
+			return '<div class="rt-error">Error: Incorrect argument for type=""</div> ' . do_shortcode($content);
+			
+	}
+		
+
 }
 	
 ?>

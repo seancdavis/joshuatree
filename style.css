@@ -575,14 +575,6 @@ p.tweet-time {
   width: 73%; }
 
 /* [tile] */
-.rt-tile {
-  float: left;
-  margin: 10px 1%;
-  height: 250px; }
-  .rt-tile img {
-    width: 100%;
-    height: auto; }
-
 .tile-1-2 {
   width: 48%; }
 
@@ -597,3 +589,22 @@ p.tweet-time {
 
 .tile-3-4 {
   width: 73%; }
+
+.rt-tile-icon {
+  float: left;
+  margin: 10px 1% 10px 0;
+  height: 250px; }
+  .rt-tile-icon h1, .rt-tile-icon h2, .rt-tile-icon h3, .rt-tile-icon h4, .rt-tile-icon h5, .rt-tile-icon h6 {
+    margin: 0 0 10px 56px; }
+  .rt-tile-icon p {
+    margin: 0 0 0 56px;
+    font-size: 11px; }
+  .rt-tile-icon p img {
+    float: left;
+    margin: 0 0 0 -56px;
+    width: 36px;
+    height: auto; }
+
+.rt-tile-thumb img {
+  width: 100%;
+  height: auto; }

@@ -28,13 +28,6 @@
 
 /* [tile] */
 .rt-tile {
-	float: left;
-	margin: 10px 1%;
-	height: 250px;
-	img {
-		width: 100%;
-		height: auto;
-	}
 }
 
 .tile-1-2 {
@@ -56,3 +49,28 @@
 .tile-3-4 {
 	width: 73%;
 }
+
+.rt-tile-icon {
+  float: left;
+  margin: 10px 1% 10px 0;
+  height: 250px;
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 10px 56px; 
+  }  
+  p {
+    margin: 0 0 0 56px;
+    font-size: 11px;
+  }
+  p img {
+    float: left;
+    margin: 0 0 0 -56px;
+    width: 36px;
+    height: auto;
+  }
+}
+  
+.rt-tile-thumb img {
+  width: 100%;
+  height: auto;
+}
+ 
