@@ -48,6 +48,13 @@ $shadow: #CCCCCC;
 	box-shadow: $x-val $y-val $blur $color; /* CSS3 */
 }
 
+@mixin opacity( $opacity-val: 50 ) {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + $opacity-val + ")"; /* IE 8 */
+  -moz-opacity: $opacity-val / 100; /* firefox */
+  -khtml-opacity: $opacity-val / 100; /* safari 1.x */
+  opacity: $opacity-val / 100; /* modern browsers */
+}
+
 /*	-Elements
 ------------------*/
 * {

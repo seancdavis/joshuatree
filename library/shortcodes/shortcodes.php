@@ -18,6 +18,7 @@ function build_tile_shortcode( $atts, $content = null ) {
 	extract( shortcode_atts( array(
 		'type' => 'normal',
 		'col' => '1-2',
+		'url' => '',
 		'new_line' => false
 	), $atts ) );
 	
@@ -28,7 +29,8 @@ function build_tile_shortcode( $atts, $content = null ) {
 			break;
 			
 		case 'thumb' || 'thumbnail' :
-			return '<div class="tile-' . esc_attr($col) . ' rt-tile rt-tile-thumb">' . do_shortcode($content) . '</div>';
+			if( $url != '' ) return '<a href="' . $url . '"><div class="tile-' . esc_attr($col) . ' rt-tile rt-tile-thumb">' . do_shortcode($content) . '</div></a>';
+			else return '<div class="tile-' . esc_attr($col) . ' rt-tile rt-tile-thumb">' . do_shortcode($content) . '</div>';
 			break;
 			
 		case 'normal' :
@@ -38,9 +40,7 @@ function build_tile_shortcode( $atts, $content = null ) {
 		default :
 			return '<div class="rt-error">Error: Incorrect argument for type=""</div> ' . do_shortcode($content);
 			
-	}
-		
-
+	}		
 }
 	
 ?>
