@@ -89,9 +89,10 @@ img {
   border: 0; }
 
 input, textarea {
-  color: #bfbfbf; }
+  color: #bfbfbf !important;
+  font-style: normal !important; }
   input:focus, textarea:focus {
-    color: #4d4d4d; }
+    color: #4d4d4d !important; }
 
 /*	-Clearfix 
 ------------------*/
@@ -670,7 +671,7 @@ p.tweet-time {
   font-size: 16px;
   margin: 20px 0 0 0; }
 .rt-mrcf .rt-mrcf-input {
-  font-size: 16px;
+  font-size: 16px !important;
   border: 1px solid #cccccc;
   -moz-border-radius: 3px;
   /* Firefox */
@@ -693,6 +694,7 @@ p.tweet-time {
   color: white;
   border: none;
   font-size: 16px;
+  color: white !important;
   margin: 20px 0 0 0;
   text-align: right; }
   .rt-mrcf .rt-mrcf-submit:hover {
@@ -708,6 +710,17 @@ p.tweet-time {
 .rt-mrcf textarea {
   height: 125px; }
 
+.rt-mrcf-required {
+  font-size: 12px !important; }
+
+.error {
+  font-size: 14px !important;
+  color: #cc0000;
+  font-style: italic; }
+
+.footer-widget .error {
+  color: white; }
+
 /* Styling for footer widget */
 .footer-widget .rt-mrcf label, .footer-widget .rt-mrcf input, .footer-widget .rt-mrcf textarea {
   font-size: 13px; }
@@ -721,7 +734,7 @@ p.tweet-time {
     float: left; }
 
 .rt-input-blur {
-  color: #4d4d4d; }
+  color: #4d4d4d !important; }
 
 /* Callout Boxes */
 .rt-success {

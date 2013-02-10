@@ -31,6 +31,7 @@ $primary: #000000;
 $accent-1: #009b77;
 $shadow: #CCCCCC;
 $success: #009b77;
+$error: #CC0000;
 
 @mixin gradient( $bottom-color: $primary, $top-color: lighten($primary, 25%) ) {
 	background-color: $top-color;
@@ -141,9 +142,10 @@ img {
 }
 
 input, textarea {
-  color: lighten($primary, 75%);
+  color: lighten($primary, 75%) !important;
+  font-style: normal !important;
   &:focus {
-    color: lighten($primary, 30%);
+    color: lighten($primary, 30%) !important;
   }
 }
 

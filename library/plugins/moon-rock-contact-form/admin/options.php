@@ -14,7 +14,6 @@ function rt_get_mrcf_option( $option_name ) {
 	$defaults = array(
 		'email_notification' => 'Off',
 		'to' => 'you@yourdomain.com',
-		'from' => 'admin@yourdomain.com',
 	);	
 	$options = get_option( 'rt_mrcf' );	
 	if( $options[$option_name] == '' ) return $defaults[$option_name];
@@ -59,7 +58,6 @@ function rt_mrcf_admin_init(){
 	add_settings_section( 'rt_mrcf_email', 'Email Settings', 'rt_mrcf_email_section', 'rt_mrcf_email_options' );	
 	add_settings_field('rt_mrcf_email_notification', 'Email Notifications:', 'rt_mrcf_email_notification', 'rt_mrcf_email_options', 'rt_mrcf_email');
 	add_settings_field('rt_mrcf_to', 'Send Email To:', 'rt_mrcf_to', 'rt_mrcf_email_options', 'rt_mrcf_email');
-	add_settings_field('rt_mrcf_from', 'From Email:', 'rt_mrcf_from', 'rt_mrcf_email_options', 'rt_mrcf_email');
 	
 }
 
@@ -86,11 +84,6 @@ function rt_mrcf_email_notification() {
 
 function rt_mrcf_to() { ?>
 	<input class="email-options" type="text" size="30" name="rt_mrcf[to]" value="<?php echo rt_get_mrcf_option('to'); ?>">
-<?php }
-
-function rt_mrcf_from() { ?>
-	<input class="email-options" type="text" size="30" name="rt_mrcf[from]" value="<?php echo rt_get_mrcf_option('from'); ?>">
-	<p><i>Note: This should be a valid email address.</i></p>
 <?php }
 
 /* Validate Options (and save settings)
