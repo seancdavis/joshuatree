@@ -15,7 +15,7 @@ function rt_features_load_files() {
 do_action( 'rt_features_init' );
 
 // Admin scripts. These only run when on admin site.
-/*if( $_GET['page'] == 'rt_feature_options' ) */ add_action( 'admin_enqueue_scripts', 'load_rt_feat_option_admin_scripts' );	
+if( $_GET['page'] == 'rt_feature_options' ) add_action( 'admin_enqueue_scripts', 'load_rt_feat_option_admin_scripts' );	
 function load_rt_feat_option_admin_scripts() {
 	$rt_feat_dir = get_template_directory_uri() . '/library/plugins/features';
 	wp_enqueue_style( 'farbtastic' );
