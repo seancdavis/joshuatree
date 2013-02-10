@@ -17,4 +17,8 @@ jQuery(document).ready(function($) {
 			$('.email-options').attr('disabled',false);
 		}
 	});
+	
+	$('#submit').click(function(){
+		$('.email-options').attr('disabled',false);
+	});
 });

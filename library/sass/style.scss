@@ -30,6 +30,7 @@ TABLE OF CONTENTS
 $primary: #000000;
 $accent-1: #009b77;
 $shadow: #CCCCCC;
+$success: #009b77;
 
 @mixin gradient( $bottom-color: $primary, $top-color: lighten($primary, 25%) ) {
 	background-color: $top-color;
@@ -53,6 +54,24 @@ $shadow: #CCCCCC;
   -moz-opacity: $opacity-val / 100; /* firefox */
   -khtml-opacity: $opacity-val / 100; /* safari 1.x */
   opacity: $opacity-val / 100; /* modern browsers */
+}
+
+@mixin corners( $radius: 15px ) {
+  -moz-border-radius: $radius; /* Firefox */  
+  -webkit-border-radius: $radius; /* Safari, Chrome */  
+  border-radius: $radius; /* CSS3 */ 
+}
+
+@mixin button( $color: lighten($primary, 20%) ) {
+  @include gradient( $color, lighten($color, 20%) );
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  font-size: 16px;
+  &:hover {
+    cursor: pointer;
+    @include gradient( $color, darken($color, 20%) );
+  }
 }
 
 /*	-Elements
@@ -119,6 +138,13 @@ li {
 
 img {
 	border: 0;
+}
+
+input, textarea {
+  color: lighten($primary, 75%);
+  &:focus {
+    color: lighten($primary, 30%);
+  }
 }
 
 /*	-Clearfix 

@@ -7,6 +7,7 @@ function display_mrcf( $atts ) {
 		'some_att' => '',
 	), $atts ) );
 	
+	$topic = $_POST['rt_mrcf_topic'];
 	$msg = $_POST['rt_mrcf_msg'];
 	
 	// Create post object
@@ -23,11 +24,11 @@ function display_mrcf( $atts ) {
 		
 		// Insert the post into the database
 		wp_insert_post( $new_msg, $error_msg ); ?>
-		<p class="rt-success">Message submitted successfully. We will be in touch soon.</p>
+		<p><span class="rt-success"><span>&#x2713;</span>&nbsp;Message submitted successfully. We will be in touch soon.</span></p><br><br>
 		<?php 
 		if( rt_get_mrcf_option('email_notification') == 'On' ) {
 			$to = rt_get_mrcf_option('to');
-			$subject = "Test mail";
+			$subject = $topic;
 			$from = rt_get_mrcf_option('from');
 			$headers = "From:" . $from;
 			mail($to,$subject,$msg,$headers); 
@@ -35,9 +36,10 @@ function display_mrcf( $atts ) {
 		
 	endif; ?>
 	
-	<form name="rt_mrcf" method="post">
-		Message:&nbsp;<input type="text" name="rt_mrcf_msg">
-		<input type="submit" value="Submit">
+	<form id="rt-mrcf" name="rt_mrcf" method="post">
+		<label id="rt-mrcf-topic">Topic:</label>&nbsp;<input class="rt-mrcf-input" type="text" name="rt_mrcf_topic" value="What is your message about?" size="30">
+		<label id="rt-mrcf-msg">Message:</label>&nbsp;<textarea class="rt-mrcf-input" type="text" name="rt_mrcf_msg">Have a question or request? Enter it here...</textarea>
+		<input type="submit" value="Send Message" id="rt-mrcf-submit">
 	</form>
 	
 <?php }
