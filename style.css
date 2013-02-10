@@ -664,12 +664,12 @@ p.tweet-time {
     width: 98%;
     height: 100%; } }
 /* Contact Form */
-#rt-mrcf label, #rt-mrcf input, #rt-mrcf textarea {
+.rt-mrcf label, .rt-mrcf input, .rt-mrcf textarea {
   display: block; }
-#rt-mrcf label {
+.rt-mrcf label {
   font-size: 16px;
   margin: 20px 0 0 0; }
-#rt-mrcf .rt-mrcf-input {
+.rt-mrcf .rt-mrcf-input {
   font-size: 16px;
   border: 1px solid #cccccc;
   -moz-border-radius: 3px;
@@ -678,9 +678,9 @@ p.tweet-time {
   /* Safari, Chrome */
   border-radius: 3px;
   /* CSS3 */
-  width: 100%;
+  width: 90%;
   padding: 5px; }
-#rt-mrcf #rt-mrcf-submit {
+.rt-mrcf .rt-mrcf-submit {
   background-color: #666666;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#666666), to(#333333));
   background-image: -webkit-linear-gradient(top, #666666, #333333);
@@ -695,7 +695,7 @@ p.tweet-time {
   font-size: 16px;
   margin: 20px 0 0 0;
   text-align: right; }
-  #rt-mrcf #rt-mrcf-submit:hover {
+  .rt-mrcf .rt-mrcf-submit:hover {
     cursor: pointer;
     background-color: black;
     background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(#333333));
@@ -705,15 +705,31 @@ p.tweet-time {
     background-image: -o-linear-gradient(top, black, #333333);
     background-image: linear-gradient(top, black, #333333);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$top-color, endColorstr=$bottom-color, GradientType=0); }
-#rt-mrcf textarea {
+.rt-mrcf textarea {
   height: 125px; }
+
+/* Styling for footer widget */
+.footer-widget .rt-mrcf label, .footer-widget .rt-mrcf input, .footer-widget .rt-mrcf textarea {
+  font-size: 13px; }
+.footer-widget .rt-success {
+  padding: 0;
+  border: none;
+  background: transparent; }
+  .footer-widget .rt-success span {
+    font-size: 20px;
+    font-weight: bold;
+    float: left; }
+
+.rt-input-blur {
+  color: #4d4d4d; }
 
 /* Callout Boxes */
 .rt-success {
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #009b77;
-  background: #f2f2f2; }
+  background: #f2f2f2;
+  font-size: 14px; }
   .rt-success span {
     font-size: 24px;
     font-weight: bold;
-    margin: 0 15px 0 0; }
+    margin: 0 10px 0 0; }

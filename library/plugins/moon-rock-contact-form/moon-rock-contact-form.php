@@ -5,6 +5,7 @@ define( 'RT_MRCF', get_template_directory() . '/library/plugins/moon-rock-contac
 require_once( RT_MRCF . '/admin/registration.php' );
 require_once( RT_MRCF . '/admin/options.php' );	
 require_once( RT_MRCF . '/content/display-form.php' );
+require_once( RT_MRCF . '/widget/widgets.php' );
 
 
 if( $_GET['page'] == 'rt_mrcf_options' ) add_action( 'admin_enqueue_scripts', 'load_rt_mrcf_admin_scripts' );	
