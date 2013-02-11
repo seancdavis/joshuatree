@@ -1,0 +1,19 @@
+.faq-category {
+  margin: 40px 0 0 0;
+  clear: both; }
+
+.faq-question {
+  float: left;
+  width: 21%;
+  height: 90px;
+  margin: 10px 1%;
+  padding: 10px 1%;
+  background: #009b77;
+  color: white;
+  font-weight: normal; }
+
+.faq-question:hover {
+  cursor: pointer; }
+
+.faq-answer {
+  display: none; }

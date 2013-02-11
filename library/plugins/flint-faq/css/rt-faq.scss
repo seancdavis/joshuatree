@@ -1,0 +1,26 @@
+$primary: #000000;
+$accent-1: #009b77;
+
+.faq-category {
+	margin: 40px 0 0 0;
+	clear: both;
+}
+
+.faq-question {
+  float: left;
+  width: 21%;
+  height: 90px;
+  margin: 10px 1%;
+  padding: 10px 1%;
+  background: $accent-1;
+  color: lighten($primary, 100%);
+  font-weight: normal;
+}
+
+.faq-question:hover {
+	cursor: pointer;
+}
+
+.faq-answer {
+	display: none;
+}

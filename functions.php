@@ -22,6 +22,7 @@ function rocktree_load_functions() {
 	// plugins
 	require_once( RT_LIBRARY_DIR . '/plugins/features/features.php' ); // all other feature functions are called from features.php
 	require_once( RT_LIBRARY_DIR . '/plugins/moon-rock-contact-form/moon-rock-contact-form.php' );
+	require_once( RT_LIBRARY_DIR . '/plugins/flint-faq/flint-faq.php' );
 	
 	// shortcodes
 	require_once( RT_LIBRARY_DIR . '/shortcodes/shortcodes.php' );
