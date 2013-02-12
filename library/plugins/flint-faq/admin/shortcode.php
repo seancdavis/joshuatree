@@ -3,7 +3,9 @@
 add_action('init', 'load_faq_script');	
 function load_faq_script() {
 	wp_enqueue_script( 'rt-faq', get_template_directory_uri() . '/library/plugins/flint-faq/js/rt-faq.js', array('jquery') );
+	//wp_enqueue_script( 'fancybox-css', get_template_directory_uri() . '/library/plugins/flint-faq/js/jquery.fancybox.pack.js', array('jquery') );
 	wp_enqueue_style( 'rt-faq', get_template_directory_uri() . '/library/plugins/flint-faq/css/rt-faq.css' ); 
+	//wp_enqueue_style( 'rt-faq', get_template_directory_uri() . '/library/plugins/flint-faq/css/jquery.fancybox.css' ); 
 }
 
 add_shortcode( 'faq', 'the_faq_loop' );

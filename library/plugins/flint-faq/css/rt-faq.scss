@@ -9,7 +9,7 @@ $accent-1: #009b77;
 .faq-question {
   float: left;
   width: 21%;
-  height: 90px;
+  height: 150px;
   margin: 10px 1%;
   padding: 10px 1%;
   background: $accent-1;
@@ -22,5 +22,13 @@ $accent-1: #009b77;
 }
 
 .faq-answer {
-	display: none;
+  display: none;
+  float: left;
+  width: 70%;
+  background: lighten($primary, 85%);
+  color: lighten($primary, 20%);
+  margin: 10px -1%;
+  padding: 10px 1%;
+  height: 150px;
+  overflow: scroll;
 }
