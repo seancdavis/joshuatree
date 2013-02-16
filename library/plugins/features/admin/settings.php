@@ -13,29 +13,47 @@ function rt_register_feature_settings() {
 
 /* Set Default Values and return option value
 -------------------------------------------------------------------------------- */
+function get_feat_option( $option_name, $choices = false ) {
+	
+	$options = array(
+		'slider_width' => array(
+			'default' => 'standard',
+			'choices' => array('standard', 'full-width')
+		),
+		'bkg_type' => array(
+			'default' => 'color',
+			'choices' => array('color','gradient','none')
+		),
+		'bkg_color' => array('default' => '#fff'),
+		'text_color' => array('default' => '#fff'),
+		'linked_content' => array('default' => 'none'),
+		'link_new_window' => array('default' => false),
+		'button_visible' => array('default' => false),
+		'button_bkg_color' => array('default' => '#000'),
+		'button_text_color' => array('default' => '#fff'),
+		'counter_type' => array('default' => 'numbers'),
+		'inactive_counter_color' => array('default' => '#fff'),
+		'active_counter_color' => array('default' => '#000'),
+		'hover_counter_color' => array('default' => '#000'),
+		'inactive_counter_text_color' => array('default' => '#000'),
+		'active_counter_text_color' => array('default' => '#fff'),
+		'hover_counter_text_color' => array('default' => '#fff'),
+		'arrows_visible' => array('default' => true),
+		'arrows_bkg_type' => array('default' => 'small'),
+		'arrows_bkg_color' => array('default' => '#000')
+	);
+	
+	$current_options = get_option( 'rt_features' );
+	
+	if( $choices == true ) return $options[$option_name]['choices'];
+	else if( $current_options[$option_name] == '' ) return $options[$option_name]['default'];
+	else return $current_options[$option_name];
+}
+
+// DELETE ME
 function rt_get_feature_option( $option_name ) {
 	
 	$defaults = array(
-		'slider_width' => 'standard',
-		'bkg_type' => 'color',
-		'text_color' => '#fff',
-		'linked_content' => 'none',
-		'link_new_window' => false,
-		'button_visible' => false,
-		'button_bkg_color' => '#000',
-		'button_text_color' => '#fff',
-		'counter_type' => 'numbers',
-		'inactive_counter_color' => '#fff',
-		'active_counter_color' => '#000',
-		'hover_counter_color' => '#000',
-		'inactive_counter_text_color' => '#000',
-		'active_counter_text_color' => '#fff',
-		'hover_counter_text_color' => '#fff',
-		'arrows_visible' => true,
-		'arrows_bkg_type' => 'small',
-		'arrows_bkg_color' => '#000',
-		
-		// old fields
 		'rt_feat_type' => 'Standard Slider',
 		'std_rt_feat_bkg_type' => 'Color',
 		'std_rt_feat_bkg' => '#fff',
@@ -60,14 +78,17 @@ function rt_features_page() { ?>
     
     <div>
     
-        <h1>Feature Options</h1>
+        <h1>Feature Settings</h1>
 		
 		<?php if ($_GET['settings-updated']==true) { _e( '<div id="message" class="updated"><p>Settings updated.</p></div>' ); } ?>
         
         <form action="options.php" method="post">
         	
 			<?php settings_fields('rt_features'); ?>
-        	<?php do_settings_sections('rt_feature_settings'); ?>
+        	<?php do_settings_sections('feat_settings_setup'); ?>
+        	<div class="rt-settings-section" id="feat-container-settings"><?php do_settings_sections('feat_container_settings'); ?></div>
+        	<div class="rt-settings-section" id="feat-content-settings"><?php do_settings_sections('feat_content_settings'); ?></div>
+        	<div class="rt-settings-section" id="feat-slider-settings"><?php do_settings_sections('feat_slider_settings'); ?></div>
 			<div class="rt-option-section" id="standard-options"><?php do_settings_sections('std_rt_feature_settings'); ?></div>
             <div class="rt-option-section" id="full-width-options"><?php do_settings_sections('fw_rt_feature_settings'); ?></div>
          	<?php submit_button(); ?>
@@ -92,6 +113,21 @@ function rt_feature_admin_init(){
 	-------------------------------- */
 	register_setting( 'rt_features', 'rt_features', 'rt_validate_feat_options' );
 	
+	
+	// Setup
+	add_settings_section( 'feat_settings_setup', '', 'feat_settings_setup', 'feat_settings_setup' );
+	
+	add_settings_section( 'feat_container_settings', '', 'feat_container_settings', 'feat_container_settings' );	
+	add_settings_field('slider_width', 'Slider Width:', 'setdisp_slider_width', 'feat_container_settings', 'feat_container_settings');
+	add_settings_field('bkg_type', 'Background Type:', 'setdisp_bkg_type', 'feat_container_settings', 'feat_container_settings');
+	add_settings_field('bkg_color', 'Background Color:', 'setdisp_bkg_color', 'feat_container_settings', 'feat_container_settings');
+	
+	add_settings_section( 'feat_content_settings', '', 'feat_content_settings', 'feat_content_settings' );
+	add_settings_field('text_color', 'Text Color:', 'setdisp_text_color', 'feat_content_settings', 'feat_content_settings');	
+	
+	add_settings_section( 'feat_slider_settings', '', 'feat_slider_settings', 'feat_slider_settings' );		 
+	 
+	 
 	/* Register Section (rt_feat_type)
 	-------------------------------- */
 	add_settings_section( 'rt_feat_type', 'Feature Type', 'rt_feat_section_type', 'rt_feature_settings' );	
@@ -111,8 +147,43 @@ function rt_feature_admin_init(){
 	
 }
 
-/* Default Background Settings Callback Functions (rt_default_background) --- what gets displayed on the page
+/* Callback functions --> what gets displayed on the settings page
 -------------------------------------------------- */
+
+function feat_radio_buttons( $option_name ) {	
+	$options = get_feat_option($option_name,true);
+	$current_option = get_feat_option($option_name);	
+	foreach ($options as $option) {
+		?><input type="radio" name="rt_features[<?php echo $option_name; ?>]" value="<?php echo $option; ?>" <?php if($current_option == $option) echo 'checked="checked"'; ?>>
+		<label><?php echo $option; ?></label><br>
+	<?php }	
+}
+
+function feat_color_field( $option_name ) {
+	?><input class="feat-color" name="rt_features[<?php echo $option_name; ?>]" size="40" type="text" value="<?php echo get_feat_option($option_name); ?>"><?php
+}
+
+// Setup
+function feat_settings_setup() {
+	?><p>Setup Section</p><?php
+	// this is where the tabs go
+}
+
+// Container
+function feat_container_settings() {}
+function setdisp_slider_width() {feat_radio_buttons('slider_width');}
+function setdisp_bkg_type() {feat_radio_buttons('bkg_type');}
+function setdisp_bkg_color() {feat_color_field('bkg_color');}
+
+// Content
+function feat_content_settings() { ?><h2>Content</h2><?php }
+function setdisp_text_color() {feat_color_field('text_color');}
+
+function feat_slider_settings() {
+	
+}
+
+
 // Feature Type Heading
 function rt_feat_section_type() {
 	echo '<p>Choose the type of feature you would like to display. The options below will change based on your choice.</p>';
