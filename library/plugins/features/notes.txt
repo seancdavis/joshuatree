@@ -1,0 +1,40 @@
+Feature Options
+-------------------
+
+- Container 
+	- Slider width (Full vs. Standard)
+	- Background (Solid color, gradient, I'll choose the color for each slider)
+		*gradient should be automatically calculated instead of letting the user choose.
+
+- Content
+	- Text 
+		- color
+	- Links
+		- what should be linked (call to action button, entire feature, I'll create my own links)
+		- Default - open in a new window?
+	- Call to action button 
+		- activation (show/hide)
+		- background color (all other needed styles are based on color choice)
+		- text color
+
+- Sliding Controls
+	- Preview indicators
+		- type (circles, numbers)
+		- background color inactive
+		- bkg color active
+		- bkg color hover
+		- text color (if necessary)
+	- Arrow toggles
+		- show/hide
+		- show background color behind?
+
+
+
+Feature Meta Boxes
+-------------------
+
+- Background Color (with gradient option) --> this should only be available if the user selected to choose their own color
+
+- Call to action button 
+		- URL
+		- open in new window
