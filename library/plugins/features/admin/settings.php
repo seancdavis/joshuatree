@@ -1,40 +1,14 @@
 <?php
-
-/**
- * Feature Settings
- *
+/* 
+ * Controls everything in the Feature Settings page. 
+ * These are global feature settings, not post meta.
+ * 
  */
-
-/* Registration
--------------------------------------------------------------------------------- */
-add_action('wp_enqueue_scripts', 'load_feature_script');	
-function load_feature_script() {
-	if( is_front_page() ) { 
-		
-		$feat_type = rt_get_feature_option( 'rt_feat_type' );
-		
-		switch( $feat_type ) {
-			
-			case 'Standard Slider' :			
-				wp_enqueue_script( 'feature-fw', get_template_directory_uri() . '/library/plugins/features/js/standard-slider.js', array('jquery') );
-				wp_enqueue_style( 'feature-fw', get_template_directory_uri() . '/library/plugins/features/css/standard-slider.css' ); 
-				break;
-				
-			case 'Full-Width Slider' :		
-				wp_enqueue_script( 'feature-fw', get_template_directory_uri() . '/library/plugins/features/js/full-width-slider.js', array('jquery') );
-				wp_enqueue_style( 'feature-fw', get_template_directory_uri() . '/library/plugins/features/css/full-width-slider.css' ); 
-				break;
-		
-		}
-		
-	}
-	
-}
 
 add_action('admin_menu', 'rt_register_feature_settings');
 
 function rt_register_feature_settings() {
-	add_submenu_page('edit.php?post_type=rt_feature', 'Feature Settings', 'Settings', 'manage_options', 'rt_feature_options', 'rt_features_page');
+	add_submenu_page('edit.php?post_type=rt_feature', 'Feature Settings', 'Settings', 'manage_options', 'rt_feature_settings', 'rt_features_page');
 }
 
 /* Set Default Values and return option value
@@ -42,6 +16,26 @@ function rt_register_feature_settings() {
 function rt_get_feature_option( $option_name ) {
 	
 	$defaults = array(
+		'slider_width' => 'standard',
+		'bkg_type' => 'color',
+		'text_color' => '#fff',
+		'linked_content' => 'none',
+		'link_new_window' => false,
+		'button_visible' => false,
+		'button_bkg_color' => '#000',
+		'button_text_color' => '#fff',
+		'counter_type' => 'numbers',
+		'inactive_counter_color' => '#fff',
+		'active_counter_color' => '#000',
+		'hover_counter_color' => '#000',
+		'inactive_counter_text_color' => '#000',
+		'active_counter_text_color' => '#fff',
+		'hover_counter_text_color' => '#fff',
+		'arrows_visible' => true,
+		'arrows_bkg_type' => 'small',
+		'arrows_bkg_color' => '#000',
+		
+		// old fields
 		'rt_feat_type' => 'Standard Slider',
 		'std_rt_feat_bkg_type' => 'Color',
 		'std_rt_feat_bkg' => '#fff',
@@ -73,9 +67,9 @@ function rt_features_page() { ?>
         <form action="options.php" method="post">
         	
 			<?php settings_fields('rt_features'); ?>
-        	<?php do_settings_sections('rt_feature_options'); ?>
-			<div class="rt-option-section" id="standard-options"><?php do_settings_sections('std_rt_feature_options'); ?></div>
-            <div class="rt-option-section" id="full-width-options"><?php do_settings_sections('fw_rt_feature_options'); ?></div>
+        	<?php do_settings_sections('rt_feature_settings'); ?>
+			<div class="rt-option-section" id="standard-options"><?php do_settings_sections('std_rt_feature_settings'); ?></div>
+            <div class="rt-option-section" id="full-width-options"><?php do_settings_sections('fw_rt_feature_settings'); ?></div>
          	<?php submit_button(); ?>
         	
         </form>
@@ -100,20 +94,20 @@ function rt_feature_admin_init(){
 	
 	/* Register Section (rt_feat_type)
 	-------------------------------- */
-	add_settings_section( 'rt_feat_type', 'Feature Type', 'rt_feat_section_type', 'rt_feature_options' );	
-	add_settings_field('rt_feat_type', 'Feature Type:', 'rt_feat_field_type', 'rt_feature_options', 'rt_feat_type');
+	add_settings_section( 'rt_feat_type', 'Feature Type', 'rt_feat_section_type', 'rt_feature_settings' );	
+	add_settings_field('rt_feat_type', 'Feature Type:', 'rt_feat_field_type', 'rt_feature_settings', 'rt_feat_type');
 	
 	/* Register Standard Slider Options
 	-------------------------------- */
-	add_settings_section( 'std_rt_feat_opts', 'Standard Slider Options', 'rt_feat_section_std_opts', 'std_rt_feature_options' );	
-	add_settings_field('std_rt_feat_bkg_type', 'Background Type:', 'std_rt_feat_field_bkg_type', 'std_rt_feature_options', 'std_rt_feat_opts');
-	add_settings_field('std_rt_feat_bkg', 'Background Color:', 'std_rt_feat_field_bkg', 'std_rt_feature_options', 'std_rt_feat_opts');
+	add_settings_section( 'std_rt_feat_opts', 'Standard Slider Options', 'rt_feat_section_std_opts', 'std_rt_feature_settings' );	
+	add_settings_field('std_rt_feat_bkg_type', 'Background Type:', 'std_rt_feat_field_bkg_type', 'std_rt_feature_settings', 'std_rt_feat_opts');
+	add_settings_field('std_rt_feat_bkg', 'Background Color:', 'std_rt_feat_field_bkg', 'std_rt_feature_settings', 'std_rt_feat_opts');
 	
 	/* Register Full-Width Slider Options
 	-------------------------------- */
-	add_settings_section( 'fw_rt_feat_opts', 'Full-Width Slider Options', 'rt_feat_section_fw_opts', 'fw_rt_feature_options' );	
-	add_settings_field('fw_rt_feat_bkg_1', 'Background Color:', 'fw_rt_feat_field_bkg_1', 'fw_rt_feature_options', 'fw_rt_feat_opts');
-	add_settings_field('fw_rt_feat_bkg_2', 'Secondary (Gradient) Color (optional):', 'fw_rt_feat_field_bkg_2', 'fw_rt_feature_options', 'fw_rt_feat_opts');
+	add_settings_section( 'fw_rt_feat_opts', 'Full-Width Slider Options', 'rt_feat_section_fw_opts', 'fw_rt_feature_settings' );	
+	add_settings_field('fw_rt_feat_bkg_1', 'Background Color:', 'fw_rt_feat_field_bkg_1', 'fw_rt_feature_settings', 'fw_rt_feat_opts');
+	add_settings_field('fw_rt_feat_bkg_2', 'Secondary (Gradient) Color (optional):', 'fw_rt_feat_field_bkg_2', 'fw_rt_feature_settings', 'fw_rt_feat_opts');
 	
 }
 

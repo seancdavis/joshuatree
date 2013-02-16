@@ -2,32 +2,33 @@ Feature Options
 -------------------
 
 - Container 
-	- Slider width (Full vs. Standard)
-	- Background (Solid color, gradient, I'll choose the color for each slider)
-		*gradient should be automatically calculated instead of letting the user choose.
+	- (slider_width) Slider width (Full vs. Standard)
+	- (bkg_type) Background (Solid color, gradient, I'll choose the color for each slider)
 
 - Content
 	- Text 
-		- color
+		- (text_color) color
 	- Links
-		- what should be linked (call to action button, entire feature, I'll create my own links)
-		- Default - open in a new window?
+		- (linked_content) what should be linked (call to action button, entire feature, I'll create my own links)
+		- (link_new_window) Default - open in a new window?
 	- Call to action button 
-		- activation (show/hide)
-		- background color (all other needed styles are based on color choice)
-		- text color
+		- (button_visible) activation (show/hide)
+		- (button_bkg_color) background color (all other needed styles are based on color choice)
+		- (button_text_color) text color
 
 - Sliding Controls
 	- Preview indicators
-		- type (circles, numbers)
-		- background color inactive
-		- bkg color active
-		- bkg color hover
-		- text color (if necessary)
+		- (counter_type) type (circles, numbers)
+		- (inactive_counter_color) background color inactive
+		- (active_counter_color) bkg color active
+		- (hover_counter_color) bkg color hover
+		- (inactive_counter_text_color) text color (if necessary)
+		- (active_counter_text_color)
+		- (hover_counter_text_color)
 	- Arrow toggles
-		- show/hide
-		- show background color behind?
-
+		- (arrows_visible) show/hide
+		- (arrows_bkg_type) show background color behind?
+		- (arrows_bkg_color)
 
 
 Feature Meta Boxes

@@ -1,5 +1,24 @@
 <?php
 
+/* Registration
+-------------------------------------------------------------------------------- */
+add_action('wp_enqueue_scripts', 'load_feature_script');	
+function load_feature_script() {
+	if( is_front_page() ) { 		
+		$feat_type = rt_get_feature_option( 'rt_feat_type' );		
+		switch( $feat_type ) {			
+			case 'Standard Slider' :			
+				wp_enqueue_script( 'feature-fw', get_template_directory_uri() . '/library/plugins/features/js/standard-slider.js', array('jquery') );
+				wp_enqueue_style( 'feature-fw', get_template_directory_uri() . '/library/plugins/features/css/standard-slider.css' ); 
+				break;				
+			case 'Full-Width Slider' :		
+				wp_enqueue_script( 'feature-fw', get_template_directory_uri() . '/library/plugins/features/js/full-width-slider.js', array('jquery') );
+				wp_enqueue_style( 'feature-fw', get_template_directory_uri() . '/library/plugins/features/css/full-width-slider.css' ); 
+				break;		
+		}		
+	}	
+}
+
 /* Display Feature --- usually called from header.php
 ------------------------------------------------------------------------- */
 add_action( 'display_feature', 'get_feature_type' );
