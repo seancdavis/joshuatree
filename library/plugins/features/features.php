@@ -2,7 +2,9 @@
 
 // Include all necessary files.
 require_once( plugin_dir_path( __FILE__ ) . '/admin/registration.php' );
-require_once( plugin_dir_path( __FILE__ ) . '/admin/settings.php' );
+require_once( plugin_dir_path( __FILE__ ) . '/admin/settings-content.php' );
+require_once( plugin_dir_path( __FILE__ ) . '/admin/settings-values.php' );
+require_once( plugin_dir_path( __FILE__ ) . '/admin/settings-init.php' );
 require_once( plugin_dir_path( __FILE__ ) . '/admin/meta.php' );
 require_once( plugin_dir_path( __FILE__ ) . '/content/display-feature.php' );
 require_once( plugin_dir_path( __FILE__ ) . '/admin/re-order.php' );		
