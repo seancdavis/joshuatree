@@ -1,9 +1,34 @@
-Feature Options
+To DO
+-------------------
+- Meta Boxes
+	- Call to action section only shows if it is selected in the settings
+	- Ideally, call to action and URL share the same field
+	- Background color should only show if color/gradient are selected
+	- Add gradient option for background color
+
+- Display Features
+	- Break up display function so it is easy to get through by using reusable and messy functions outside the display function
+	- Add functionality for all settings and meta
+	- Tie back into one JS and one CSS file for displaying on site
+
+- Settings
+	- Add arguments array to display functions
+	- Add helper text where necessary
+	- Add icon/image helpers where necessary
+	- Add tab/menu functionality
+	
+- Re-Order Features
+	- user jQuery UI for drag and drop functionality
+	- If easy enough with jQuery UI, consider adding this as a tab to the settings page
+	
+
+Feature Settings
 -------------------
 
 - Container 
 	- (slider_width) Slider width (Full vs. Standard)
 	- (bkg_type) Background (Solid color, gradient, I'll choose the color for each slider)
+	- (bkg_color) 
 
 - Content
 	- Text 
@@ -33,9 +58,8 @@ Feature Options
 
 Feature Meta Boxes
 -------------------
-
-- Background Color (with gradient option) --> this should only be available if the user selected to choose their own color
-
-- Call to action button 
-		- URL
-		- open in new window
+_disable_feature
+_linked_content
+_link_new_window
+_bkg_color
+_button_text

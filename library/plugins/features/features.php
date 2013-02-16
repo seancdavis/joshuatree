@@ -16,8 +16,7 @@ function load_rt_feat_option_admin_scripts() {
 	wp_enqueue_style( 'farbtastic' );
 	wp_enqueue_script( 'farbtastic' );
 	wp_enqueue_style( 'wp-color-picker' );
-	wp_enqueue_script( 'farbtastic-toggle', $rt_feat_dir . '/admin/farbtastic-toggle.js', array('jquery', 'farbtastic', 'wp-color-picker') );
-	wp_enqueue_script( 'feature-settings', $rt_feat_dir . '/admin/settings.js', array('jquery') );	
+	wp_enqueue_script( 'feature-settings', $rt_feat_dir . '/admin/settings.js', array('jquery', 'farbtastic', 'wp-color-picker') );	
 }
 
 // load REORDER OPTIONS scripts
