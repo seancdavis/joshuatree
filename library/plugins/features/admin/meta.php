@@ -35,30 +35,32 @@ function rt_feature_options() {
 	<input type="checkbox" name="_disable_feature" value="1" <?php print $disable_feature_checked; ?> />
     <label for="_disable_feature"><i>Once published, the feature is active by default. Checking the box below will disable the feature, even if published.</i></label><?php
 	
-	/* FEATURE URL
+	/* BUTTON AND LINKS
 	------------------------------------------------------------------------- */
+	$button_text = get_post_meta($post->ID, '_button_text', true); 
 	$linked_content = get_post_meta($post->ID, '_linked_content', true);
-	$link_new_window = get_post_meta($post->ID, '_link_new_window', true); ?>
-	<h4 class="feature-sub-title">Link to Site Content</h4>
-    <label for="_linked_content">URL:</label>
-	<input type="text" name="_linked_content" value="<?php echo $linked_content; ?>" size="50" />
-    <input type="checkbox" name="_link_new_window" value="1" <?php if($link_new_window == 1) echo 'checked="checked"'; ?> />
-	<label for="_link_new_window">Open link in new window</label>
-	<p><i>Note: If you leave this blank, your feature will not be a hyperlink.</i></p><?php
+	$link_new_window = get_post_meta($post->ID, '_link_new_window', true);
+	$opt_linked_content = get_feat_option_value('linked_content'); 
+	if( $opt_linked_content == 'content') { ?><h4 class="feature-sub-title">Link to Site Content</h4><?php }
+	else if( $opt_linked_content == 'button' ) { ?>
+		<h4 class="feature-sub-title">Call to Action Button</h4>
+		<label for="_button_text">Text: </label>
+		<input type="text" name="_button_text" value="<?php print $button_text; ?>" size="50"><br><br>
+	<?php }
+	if( $opt_linked_content == 'content' || $opt_linked_content == 'button' ) { ?>
+		    <label for="_linked_content">URL:</label>
+			<input type="text" name="_linked_content" value="<?php echo $linked_content; ?>" size="50" />
+		    <input type="checkbox" name="_link_new_window" value="1" <?php if($link_new_window == 1) echo 'checked="checked"'; ?> />
+			<label for="_link_new_window">Open link in new window</label>
+	<?php }	
 	
 	/* BACKGROUND COLOR
 	------------------------------------------------------------------------- */
-	$bkg_color = get_post_meta($post->ID, '_bkg_color', true); ?>
-	<h4 class="feature-sub-title">Background Color</h4>
-	<input class="feat-color" name="_bkg_color" size="40" type="text" value="<?php echo $bkg_color; ?>"><?php
-	
-	/* CALL TO ACTION BUTTON TEXT
-	------------------------------------------------------------------------- */
-	$button_text = get_post_meta($post->ID, '_button_text', true); ?>  
-	<h4 class="feature-sub-title">Call to Action Button</h4>
-	<label for="_button_text">Text: </label>
-	<input type="text" name="_button_text" value="<?php print $button_text; ?>" size="50" /><?php 
-	
+	$bkg_color = get_post_meta($post->ID, '_bkg_color', true); 
+	if( get_feat_option_value('bkg_color_lock') == false ) : ?>
+		<h4 class="feature-sub-title">Background Color</h4>
+		<input class="feat-color" name="_bkg_color" size="40" type="text" value="<?php echo $bkg_color; ?>">
+	<?php endif;		
 }
 
 /* save box data

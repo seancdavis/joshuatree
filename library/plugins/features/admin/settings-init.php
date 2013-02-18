@@ -12,7 +12,7 @@ function rt_feature_admin_init(){
 	foreach ($rt_feat_settings as $sections => $section) {
 		add_settings_section($sections, '', $sections, $sections);
 		foreach($section as $field) {
-			add_settings_field($field['name'], $field['label'], 'feat_' . $field['type'] . '_field', $sections, $sections, $field['name']);
+			add_settings_field($field['name'], $field['label'], 'feat_' . $field['type'] . '_field', $sections, $sections, array($field['name'], $field['before'], $field['after']) );
 		}
 	}	
 }

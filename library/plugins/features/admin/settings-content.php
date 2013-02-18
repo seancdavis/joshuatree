@@ -34,21 +34,26 @@ function feat_slider_settings( $settings_name ) {
 	?><h2>Slider</h2><?php
 }
 
-function feat_radio_field( $option_name ) {	
+function feat_radio_field( $args ) {
+	echo $args[1]; // before content
+	$option_name = $args[0];
 	$options = get_feat_option_choices($option_name);
 	$current_option = get_feat_option_value($option_name);	
 	foreach ($options as $option) {
 		?><input type="radio" name="rt_features[<?php echo $option_name; ?>]" value="<?php echo $option; ?>" <?php if($current_option == $option) echo 'checked="checked"'; ?>>
 		<label><?php echo $option; ?></label><br><?php
-	}	
+	}
+	echo $args[2]; // after content
 }
 
-function feat_checkbox_field( $option_name ) {
+function feat_checkbox_field( $args ) {
+	$option_name = $args[0];
 	$current_option = get_feat_option_value($option_name);
 	?><input value=true type="checkbox" name="rt_features[<?php echo $option_name; ?>]" <?php if( $current_option == true ) echo 'checked="checked"';?> ><?php
 }
 
-function feat_color_field( $option_name ) {
+function feat_color_field( $args ) {
+	$option_name = $args[0];
 	?><input class="feat-color" name="rt_features[<?php echo $option_name; ?>]" size="40" type="text" value="<?php echo get_feat_option_value($option_name); ?>"><?php
 }
 

@@ -26,6 +26,12 @@ $rt_feat_settings = array(
 		),
 	),
 	'feat_content_settings' => array(
+		'bkg_color_lock' => array(
+			'name' => 'bkg_color_lock',
+			'label' => 'Lock individual background color',
+			'type' => 'checkbox',
+			'default' => false,
+		),
 		'text_color' => array(
 			'name' => 'text_color',
 			'label' => 'Text Color:',
@@ -39,21 +45,9 @@ $rt_feat_settings = array(
 			'default' => 'none',
 			'choices' => array('content', 'button', 'none')
 		),
-		'link_new_window' => array(
-			'name' => 'link_new_window',
-			'label' => 'Link New Window:',
-			'type' => 'checkbox',
-			'default' => false
-		),
-		'button_visible' => array(
-			'name' => 'button_visible',
-			'label' => 'Button Visible:',
-			'type' => 'checkbox',
-			'default' => false
-		),
 		'button_bkg_color' => array(
 			'name' => 'button_bkg_color',
-			'label' => 'Background Color:',
+			'label' => 'Button Background Color:',
 			'type' => 'color',
 			'default' => '#000'
 		),
@@ -89,6 +83,12 @@ $rt_feat_settings = array(
 			'label' => 'Hover Counter Color:',
 			'type' => 'color',
 			'default' => '#000'
+		),
+		'counter_border_color' => array(
+			'name' => 'counter_border_color',
+			'label' => 'Counter Border Color',
+			'type' => 'color',
+			'default' => '#ccc',
 		),
 		'inactive_counter_text_color' => array(
 			'name' => 'inactive_counter_text_color',
