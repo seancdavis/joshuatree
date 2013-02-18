@@ -1,5 +1,18 @@
 <?php
 
+/* 
+ * Returns the name of the section id. 
+ * ---------------------------------------------------------------
+ * This is built 100% on the foundation of feat_{id}_settings.
+ * The settings page will look super weird if this isn't followed.
+ * 
+ */
+function get_feat_section_name($id) {
+	$name = substr( $id, 5, strlen( $id ) - 14 );
+	$name = strtoupper( substr($name, 0, 1) ) . substr($name, 1);	
+	return $name;
+}
+
 function rt_features_page() { ?>
     
     <div>
@@ -10,29 +23,32 @@ function rt_features_page() { ?>
         
         <form action="options.php" method="post">
         	
-			<?php settings_fields('rt_features'); ?>
-        	<?php do_settings_sections('feat_settings_setup'); ?>
-        	<div class="rt-settings-section" id="feat-container-settings"><?php do_settings_sections('feat_container_settings'); ?></div>
-        	<div class="rt-settings-section" id="feat-content-settings"><?php do_settings_sections('feat_content_settings'); ?></div>
-        	<div class="rt-settings-section" id="feat-slider-settings"><?php do_settings_sections('feat_slider_settings'); ?></div>
-         	<?php submit_button(); ?>
+        	<?php global $rt_feat_settings;
+			$tab_control = 1;
+			settings_fields('rt_features');
+        	do_settings_sections('feat_settings_setup');
+			foreach ($rt_feat_settings as $sections) {
+				$name = get_feat_section_name( key($rt_feat_settings) ); ?>					
+				<a class="feature-settings-tab <?php if( $tab_control == 1 ) echo 'feature-settings-tab-selected'; ?>" id="tab_<?php echo key($rt_feat_settings); ?>"><?php echo $name; ?></a><?php
+				$tab_control++; 
+			}
+			$tab_control = 1;
+    		foreach ($rt_feat_settings as $sections) {    			    			
+    			$name = get_feat_section_name( key($rt_feat_settings) ); ?>					
+				<div class="feature-settings-section <?php if( $tab_control == 1 ) echo 'feature-settings-section-selected'; ?>" id="<?php echo key($rt_feat_settings); ?>">
+					<h2><?php echo $name; ?></h2>
+					<?php do_settings_sections( key($rt_feat_settings) ); ?>
+				</div><?php 
+				$tab_control++;
+			}			
+			submit_button(); ?>
         	
         </form>
 	
     </div><?php
 }
 
-function feat_container_settings( $settings_name ) {
-	?><h2>Container</h2><?php
-}
-
-function feat_content_settings( $settings_name ) {
-	?><h2>Content</h2><?php
-}
-
-function feat_slider_settings( $settings_name ) {
-	?><h2>Slider</h2><?php
-}
+function feat_settings_section() {}
 
 function feat_radio_field( $args ) {
 	echo $args[1]; // before content

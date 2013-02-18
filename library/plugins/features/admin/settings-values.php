@@ -3,6 +3,7 @@
 global $rt_feat_settings;
 
 $rt_feat_settings = array(
+	'throw_me_away' => array(), // my foreach loop was not picking up first key here. This keeps it running.
 	'feat_container_settings' => array(
 		'slider_width' => array(
 			'name' => 'slider_width',

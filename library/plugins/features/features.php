@@ -17,6 +17,7 @@ function load_rt_feat_option_admin_scripts() {
 	wp_enqueue_script( 'farbtastic' );
 	wp_enqueue_style( 'wp-color-picker' );
 	wp_enqueue_script( 'feature-settings', $rt_feat_dir . '/admin/settings.js', array('jquery', 'farbtastic', 'wp-color-picker') );	
+	wp_enqueue_style( 'feature-settings', $rt_feat_dir . '/admin/settings.css' );
 }
 
 // load REORDER OPTIONS scripts
