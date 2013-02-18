@@ -45,10 +45,19 @@
 .feature-counter:hover {
   cursor: pointer; }
 
-.move-arrow {
-  background-color: transparent;
+/* ARROWS
+---------------------------- */
+.feature-arrow {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30px;
+  width: 50px;
+  left: 0px; }
+  .feature-arrow:hover {
+    cursor: pointer; }
+
+.feature-arrow-full-height {
   height: 100%;
-  width: 60px;
   position: absolute;
   z-index: 100;
   /* IE 8 */
@@ -62,19 +71,11 @@
   /* Good browsers */
   opacity: 0.5; }
 
-.move-arrow:hover {
-  background-color: #ebebeb;
-  cursor: pointer; }
-
-.move-arrow p {
-  margin: 180px 0 0 22px;
-  font-size: 24px; }
-
-#move-left {
-  left: 0px; }
-
-#move-right {
-  left: 840px; }
+.feature-arrow-small {
+  height: 50px;
+  position: absolute;
+  top: 175px;
+  z-index: 100; }
 
 #feature-wrapper a {
   color: #000; }

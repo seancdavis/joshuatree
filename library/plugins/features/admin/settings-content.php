@@ -47,14 +47,18 @@ function feat_radio_field( $args ) {
 }
 
 function feat_checkbox_field( $args ) {
+	echo $args[1]; // before content
 	$option_name = $args[0];
 	$current_option = get_feat_option_value($option_name);
 	?><input value=true type="checkbox" name="rt_features[<?php echo $option_name; ?>]" <?php if( $current_option == true ) echo 'checked="checked"';?> ><?php
+	echo $args[2]; // after content
 }
 
 function feat_color_field( $args ) {
+	echo $args[1]; // before content
 	$option_name = $args[0];
 	?><input class="feat-color" name="rt_features[<?php echo $option_name; ?>]" size="40" type="text" value="<?php echo get_feat_option_value($option_name); ?>"><?php
+	echo $args[2]; // after content
 }
 
 function rt_validate_feat_options($input) {

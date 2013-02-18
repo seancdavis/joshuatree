@@ -82,7 +82,9 @@ function get_feat_css() {
 	$active_text = get_feat_option_value('active_counter_text_color');
 	$hover_text = get_feat_option_value('hover_counter_text_color');
 	$arrows_type = get_feat_option_value('arrows_type');
-	$arrows_bkg = get_feat_option_value('arrows_bkg_color'); ?>
+	$arrows_color = get_feat_option_value('arrows_color'); 
+	$arrows_bkg = get_feat_option_value('arrows_bkg_color');
+	$arrows_hover = get_feat_option_value('arrows_hover_color'); ?>
 	
 	<style type="text/css">	
 		#feature-wrapper { <?php
@@ -112,6 +114,21 @@ function get_feat_css() {
 		.feature-counter-selected {
 			background-color: <?php echo $active_bkg; ?>;
 			color: <?php echo $active_text; ?>;
+		}
+		.feature-arrow {
+			background-color: <?php echo $arrows_bkg; ?>;
+			<?php if( $slider_width == 'full-width' ) echo 'width: 5%;'; ?>			
+		}
+		.feature-arrow:hover {
+			background-color: <?php echo $arrows_hover; ?>;			
+		}
+		#feature-move-left {
+			background-image: url(<?php echo get_template_directory_uri() . '/images/left-arrow-'.$arrows_color.'.png'; ?>);
+		}
+		#feature-move-right {
+			background-image: url(<?php echo get_template_directory_uri() . '/images/right-arrow-'.$arrows_color.'.png'; ?>);
+			<?php if( $slider_width == 'standard' ) echo 'left: 840px;'; 
+			else echo 'left: 95%;'; ?>
 		}
 	</style>
 <?php }
@@ -160,58 +177,14 @@ function display_feat_slider() {
 				<div id="feature-counter-"<?php echo $i; ?>" class="feature-counter <?php echo $counter_type; ?>-counter" style="left:<?php echo $left_control; ?>%;"><?php if( $counter_type == 'numbers' ) echo $i; ?></div>
 				<?php $left_control = $left_control + 4;
 			}
-		endif; ?>
-		</div>
-	</div>
-		
-				<?php /*
-				switch( $feat_type ) {
-					
-					case 'Standard Slider':
-					$std_url = get_post_meta( get_the_ID(), '_std_url', true );
-					$std_target = get_post_meta( get_the_ID(), '_std_target', true );
-					if( $std_url != '' && $std_target == 1 ) echo '<a href="' . $std_url . '" target="_blank">';
-					else if( $feat_type == 'Standard Slider' && $std_url != '' ) echo '<a href="' . $std_url . '>';					
-					echo '<div id="feature-container-' . $feature_counter . '" class="feature-container">';					
-					break;
-					
-					case 'Full-Width Slider':
-					$these_colors = get_this_feature_color( $feat_type, get_the_ID(), $fw_def_1, $fw_def_2 );
-					echo '<div id="feature-container-' . $feature_counter . '" class="feature-container" style="background-color:' . $these_colors . '">';	
-					break;					
-					
-				}				*/
-                	
-                    /*
-                        	
-					if( $feat_type == 'Full-Width Slider' && get_post_meta( get_the_ID(), '_button_text', true ) != '' ) : ?>
-                        
-                        <div class="call-to-action-container">
-                        
-                            <?php 
-                                $button_text = get_post_meta( get_the_ID(), '_button_text', true );
-                                $button_url = get_post_meta( get_the_ID(), '_button_url', true );
-                                $button_target = get_post_meta( get_the_ID(), '_button_target', true );
-                                
-                                echo '<a class="feature-link" target="' . $button_target . '" href="' . $button_url . '"><span class="call-to-action">' . $button_text . '</span></a>'; ?>
-                    
-                        </div>
-                        
-					<?php endif; ?>
-                    
-				</div>
-                
-				<?php if( $feat_type == 'Standard Slider' && $std_url != '' ) echo '</a>';
-							
-				$feature_counter++;
-			
 		endif;
-			
-		endwhile; ?>
-        
-        </div>
-        
-	</div>*/
-}
+		$arrows_type = get_feat_option_value('arrows_type'); 
+		if( $arrows_type != 'none' ) : ?>
+			<div class="feature-arrow feature-arrow-<?php echo $arrows_type; ?>" id="feature-move-left"></div>
+			<div class="feature-arrow feature-arrow-<?php echo $arrows_type; ?>" id="feature-move-right"></div>
+		<?php endif; ?>
+		</div>
+	</div><?php 
+} 
 
 ?>

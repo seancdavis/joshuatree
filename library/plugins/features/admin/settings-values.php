@@ -36,7 +36,7 @@ $rt_feat_settings = array(
 			'name' => 'text_color',
 			'label' => 'Text Color:',
 			'type' => 'color',
-			'default' => '#fff'
+			'default' => '#fff',
 		),
 		'linked_content' => array(
 			'name' => 'linked_content',
@@ -115,9 +115,23 @@ $rt_feat_settings = array(
 			'default' => 'small',
 			'choices' => array('small', 'full-height', 'none')
 		),
+		'arrows_color' => array(
+			'name' => 'arrows_color',
+			'label' => 'Arrows Color',
+			'type' => 'radio',
+			'default' => 'white',
+			'choices' => array('white', 'grey', 'black')
+		),
 		'arrows_bkg_color' => array(
 			'name' => 'arrows_bkg_color',
 			'label' => 'Arrows Background Color',
+			'type' => 'color',
+			'default' => '',
+			'after' => '<p><i>Leaving this blank will make the background transparent.</i></p>'
+		),
+		'arrows_hover_color' => array(
+			'name' => 'arrows_hover_color',
+			'label' => 'Arrows Hover Color',
 			'type' => 'color',
 			'default' => '#000',
 		),

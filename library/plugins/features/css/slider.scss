@@ -1,3 +1,16 @@
+@mixin opacity($percent) {
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + $percent + ")";  
+  /* IE 5-7 */
+  filter: alpha(opacity=$percent);  
+  /* Netscape */
+  -moz-opacity: $percent/100;  
+  /* Safari 1.x */
+  -khtml-opacity: $percent/100;  
+  /* Good browsers */
+  opacity: $percent/100;
+}
+
 #feature-wrapper {
 	position: relative;
 	width: 100%;
@@ -54,40 +67,31 @@
 	cursor: pointer;
 }
 
-.move-arrow {
-	background-color: transparent;
+/* ARROWS
+---------------------------- */
+.feature-arrow {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30px;
+  width: 50px;
+  left: 0px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.feature-arrow-full-height {
 	height: 100%;
-	width: 60px;
 	position: absolute;
 	z-index: 100;
-	/* IE 8 */
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";	
-	/* IE 5-7 */
-	filter: alpha(opacity=50);	
-	/* Netscape */
-	-moz-opacity: 0.5;	
-	/* Safari 1.x */
-	-khtml-opacity: 0.5;	
-	/* Good browsers */
-	opacity: 0.5;
+	@include opacity(50);
 }
 
-.move-arrow:hover {
-	background-color: #ebebeb;
-	cursor: pointer;
-}
-
-.move-arrow p {
-	margin: 180px 0 0 22px;
-	font-size: 24px;
-}
-
-#move-left {
-	left: 0px;
-}
-
-#move-right {
-	left: 840px;
+.feature-arrow-small {  
+  height: 50px;
+  position: absolute;
+  top: 175px;
+  z-index: 100;
 }
 
 #feature-wrapper a {
@@ -149,9 +153,6 @@
   float: left;
   margin: 10px 0 0 0;
 }
-
-
-
 
 /* RESPONSIVE CONTROL */
 @media screen and (max-width: 900px) {
