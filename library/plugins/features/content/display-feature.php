@@ -5,7 +5,7 @@
 add_action('wp_enqueue_scripts', 'load_feature_script');	
 function load_feature_script() {
 	if( is_front_page() ) { 		
-		//wp_enqueue_script( 'feature-fw', get_template_directory_uri() . '/library/plugins/features/js/slider.js', array('jquery') );
+		wp_enqueue_script( 'feature-fw', get_template_directory_uri() . '/library/plugins/features/js/slider.js', array('jquery') );
 		wp_enqueue_style( 'feature-fw', get_template_directory_uri() . '/library/plugins/features/css/slider.css' );
 	}	
 }
@@ -115,6 +115,9 @@ function get_feat_css() {
 			background-color: <?php echo $active_bkg; ?>;
 			color: <?php echo $active_text; ?>;
 		}
+		.feature-counter-selected:hover {
+			background-color: <?php echo $active_bkg; ?>;
+		}
 		.feature-arrow {
 			background-color: <?php echo $arrows_bkg; ?>;
 			<?php if( $slider_width == 'full-width' ) echo 'width: 5%;'; ?>			
@@ -173,8 +176,8 @@ function display_feat_slider() {
 		if( $counter_type != 'none' ) :
 			if( $counter_type == 'circles' ) $left_control = 50 - ( ( $feature_counter / 2 ) * 4 );
 			else $left_control = 0;
-			for( $i = 1; $i < $feature_counter + 1; $i++ ) { ?>
-				<div id="feature-counter-"<?php echo $i; ?>" class="feature-counter <?php echo $counter_type; ?>-counter" style="left:<?php echo $left_control; ?>%;"><?php if( $counter_type == 'numbers' ) echo $i; ?></div>
+			for( $i = 1; $i < $feature_counter; $i++ ) { ?>
+				<div id="feature-counter-<?php echo $i; ?>" class="feature-counter <?php echo $counter_type; ?>-counter" style="left:<?php echo $left_control; ?>%;"><?php if( $counter_type == 'numbers' ) echo $i; ?></div>
 				<?php $left_control = $left_control + 4;
 			}
 		endif;

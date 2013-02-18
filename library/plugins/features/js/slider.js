@@ -22,9 +22,7 @@ jQuery(document).ready(function($) {
 	---------------------------------------------- */
 	// Variable Setup
 	//counts number of features (requires class="feature-container")
-	var featureCount = $(".feature-container").length;
-	// finds starting point for positioning of counters
-	var counterLeft = 75;
+	var featureCount = $(".feature-container").length;	
 	// init feature position
 	var position = 1;
 	var previous = featureCount;
@@ -34,15 +32,8 @@ jQuery(document).ready(function($) {
 	var clickDiff = 0;
 	var newTime = new Date();
 	
-	$('#feature-container').prepend('<div class="move-arrow" id="move-left"><p>&#9664;</p></div><div class="move-arrow" id="move-right"><p>&#9654;</p></div>');
-	
-	// creates and positions control counters
-	for(i = 1; i < (featureCount + 1); i++) {				
-		$("#feature-container").prepend("<div id='feature-counter-" + i + "' class='feature-counter' style='left:" + counterLeft + "px'>" + i + "</div>");		
-		counterLeft = counterLeft + 35;		
-	}
-	
-	for(j = 1; j < (featureCount + 1); j++) {
+	// Not sure if I still need this image resizing or not. needs further testing before deleting.
+	/*for(j = 1; j < (featureCount + 1); j++) {
 		
 		var height = $("#feature-container-" + j + " img").attr('height');
 		var width = $("#feature-container-" + j + " img").attr('width');
@@ -53,11 +44,11 @@ jQuery(document).ready(function($) {
 		$("#feature-container-" + j + " img").attr('height', height);
 		$("#feature-container-" + j + " img").attr('width', width);
 		
-	}
+	}*/
 
 	// sets init selection as the first feature
 	// class="feature-counter-selected" enables the control counter color to be controlled via CSS	
-	$('#feature-counter-1').attr('class','feature-counter-selected');
+	$('#feature-counter-1').addClass('feature-counter-selected');
 	
 	// <-- END SETUP
 	
@@ -72,8 +63,8 @@ jQuery(document).ready(function($) {
 	function autoSlide() {
 		
 		// changes color of control counter		
-		$(".feature-counter-selected").attr('class','feature-counter');
-		$("#feature-counter-" + next).attr('class','feature-counter-selected');	
+		$(".feature-counter-selected").removeClass('feature-counter-selected');
+		$("#feature-counter-" + next).addClass('feature-counter-selected');	
 		
 		// control variables to help slide the correct feature
 		if(position == featureCount) {
@@ -110,7 +101,7 @@ jQuery(document).ready(function($) {
 	
 	/* =arrow CLICK
 	---------------------------------------------- */
-	$("#move-right").click(function() {
+	$("#feature-move-right").click(function() {
 		
 		if( position == featureCount ) {			
 			slideLeft(1);			
@@ -121,7 +112,7 @@ jQuery(document).ready(function($) {
 		
 	});
 	
-	$("#move-left").click(function() {
+	$("#feature-move-left").click(function() {
 		
 		if( position == 1 ) {			
 			slideRight(featureCount);			
@@ -154,7 +145,7 @@ jQuery(document).ready(function($) {
 	});
 	
 	function slideLeft(id) {
-		
+		id = parseInt(id);
 		// control variable init
 		var lastID = position;
 		
@@ -172,8 +163,8 @@ jQuery(document).ready(function($) {
 		if(id != position && clickDiff > 1) {
 			
 			// changes color of control counters
-			$(".feature-counter-selected").attr('class','feature-counter');
-			$("#feature-counter-" + id).attr('class','feature-counter-selected');	
+			$(".feature-counter-selected").removeClass('feature-counter-selected');
+			$("#feature-counter-" + id).addClass('feature-counter-selected');	
 			
 			// controls order of features
 			if(id == featureCount) {
@@ -206,7 +197,7 @@ jQuery(document).ready(function($) {
 	}
 	
 	function slideRight(id) {
-		
+		id = parseInt(id);
 		// control variable init
 		var lastID = position;
 		
@@ -224,8 +215,8 @@ jQuery(document).ready(function($) {
 		if(id != position && clickDiff > 1) {
 			
 			// changes color of control counters
-			$(".feature-counter-selected").attr('class','feature-counter');
-			$("#feature-counter-" + id).attr('class','feature-counter-selected');	
+			$(".feature-counter-selected").removeClass('feature-counter-selected');
+			$("#feature-counter-" + id).addClass('feature-counter-selected');	
 			
 			// controls order of features
 			if(id == 1) {
@@ -272,8 +263,8 @@ jQuery(document).ready(function($) {
 		else {
 			window.clearInterval(featureInterval);
 			
-			$(".feature-counter-selected").attr('class','feature-counter');
-			$("#feature-counter-1").attr('class','feature-counter-selected');
+			$(".feature-counter-selected").removeClass('feature-counter-selected');
+			$("#feature-counter-1").addClass('feature-counter-selected');
 			
 			previous = featureCount;
 			position = 1;
