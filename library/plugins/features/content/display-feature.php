@@ -151,14 +151,16 @@ function display_feat_slider() {
     	<div id="feature-container"><?php
 	$feature_counter = 1;
 	$loop = new WP_Query( array ( 'post_type' => 'rt_feature', 'orderby' => 'meta_value', 'order' => 'ASC', 'meta_key' => '_order', 'posts_per_page' => '10' ) );
-		while ( $loop->have_posts() ) : $loop->the_post();			
+		while ( $loop->have_posts() ) : $loop->the_post();	
 			// feature must be active to be used
 			if( get_post_meta( get_the_ID(), '_disable_feature', true ) == 0 ) : 
 				$href = get_post_meta( get_the_ID(), '_linked_content', true ); ?>				
 				<div id="feature-container-<?php echo $feature_counter; ?>" class="feature-container" style="<?php echo get_feat_bkg_color(); ?>" ><?php  
-					the_post_thumbnail( 'full', array('class' => 'feature-image'));					
-					the_title( '<h1 class="feature-title">', '</h1>' );
-					the_content(); 
+					the_post_thumbnail( 'full', array('class' => 'feature-image')); ?>					
+					<div class="feature-content feature-text-display-<?php echo get_feat_option_value('text_display'); ?>"><?php
+						the_title( '<h1 class="feature-title">', '</h1>' );
+						the_content(); ?>
+					</div><?php
 					// call to action button					
 					if( get_feat_option_value('linked_content') == 'button' && $href != '' ) :
 						if( get_post_meta( get_the_ID(), '_link_new_window', true ) == true ) $target = '_blank'; else $target ='_self';
@@ -171,7 +173,7 @@ function display_feat_slider() {
 			<?php 
 			$feature_counter++;		
 			endif;
-		endwhile;		
+		endwhile;
 		$counter_type = get_feat_option_value('counter_type');
 		if( $counter_type != 'none' ) :
 			if( $counter_type == 'circles' ) $left_control = 50 - ( ( $feature_counter / 2 ) * 4 );

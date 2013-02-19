@@ -26,6 +26,14 @@ function rt_feature_options() {
 	// Noncename needed to verify where the data originated
     echo '<input type="hidden" name="rt_feature_options_noncename" id="rt_feature_options_noncename" value="' . wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
     
+	/* ORDER
+	 * 
+	 * This is controlled from Re-Order Features page. Because of that,
+	 * we don't need to actually show any fields here --> it will give a 
+	 * new post a meta value of 20 for its order.	 * 
+	------------------------------------------------------------------------- */
+	
+	
 	/* DISABLE FEATURE
 	------------------------------------------------------------------------- */
 	$disable_feature = get_post_meta($post->ID, '_disable_feature', true);	
@@ -86,6 +94,10 @@ function rt_save_feature_options_meta($post_id, $post) {
 	$feature_meta['_link_new_window'] = $_POST['_link_new_window'];
 	$feature_meta['_bkg_color'] = sanitize_text_field( $_POST['_bkg_color'] );
 	$feature_meta['_button_text'] = sanitize_text_field( $_POST['_button_text'] );
+	
+	$feature_order = get_post_meta($post->ID, '_order', true);
+	if( $feature_order == '' ) $feature_order = 20;
+	$feature_meta['_order'] = $feature_order;
 	
 	
 	/* update or add meta values

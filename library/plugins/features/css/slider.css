@@ -1,3 +1,21 @@
+/*
+Slider Style
+
+Table of Contents
+----------------------
+=SASS FUNCTIONS
+=CONTAINERS & CONTENT (text)
+=COUNTERS
+=ARROWS
+=BUTTONS
+=RESPONSIVE CONTROL
+
+*/
+/* =SASS FUNCTIONS
+---------------------------------------- */
+/* end */
+/* =CONTAINERS & CONTENT
+---------------------------------------- */
 #feature-wrapper {
   position: relative;
   width: 100%;
@@ -5,6 +23,13 @@
   background-color: #fff;
   margin: 20px 0 0 0;
   clear: both; }
+  #feature-wrapper p {
+    font-size: 18px;
+    width: 60%;
+    white-space: pre-wrap;
+    line-height: 22px; }
+    #feature-wrapper p a:hover {
+      text-decoration: underline; }
 
 #feature-container {
   width: 900px;
@@ -13,6 +38,35 @@
   overflow: hidden;
   height: 400px; }
 
+.feature-container {
+  float: left;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  clear: none;
+  width: 91%;
+  height: 350px;
+  z-index: 10;
+  white-space: nowrap;
+  padding: 25px 75px; }
+  .feature-container h1 {
+    padding: 0;
+    margin: 25px 0 0 0;
+    font-size: 24px; }
+  .feature-container .feature-text-display-box {
+    border: 1px solid white; }
+
+#feature-container-1 {
+  left: 0%; }
+
+.feature-image {
+  float: right;
+  clear: none;
+  position: relative;
+  margin: 0 75px 0 0; }
+
+/* =COUNTERS
+---------------------------------------- */
 .feature-counter, .feature-counter-selected {
   position: absolute;
   z-index: 30;
@@ -45,7 +99,7 @@
 .feature-counter:hover {
   cursor: pointer; }
 
-/* ARROWS
+/* =ARROWS
 ---------------------------- */
 .feature-arrow {
   background-position: center;
@@ -77,48 +131,8 @@
   top: 175px;
   z-index: 100; }
 
-#feature-wrapper a {
-  color: #000; }
-
-.feature-container {
-  float: left;
-  position: absolute;
-  left: 100%;
-  top: 0;
-  clear: none;
-  width: 91%;
-  height: 350px;
-  z-index: 10;
-  white-space: nowrap;
-  padding: 25px 75px; }
-
-#feature-container-1 {
-  left: 0%; }
-
-.feature-container h1 {
-  padding: 0;
-  margin: 25px 0 0 0;
-  font-size: 24px; }
-
-#feature-wrapper p {
-  font-size: 18px;
-  width: 60%;
-  white-space: pre-wrap;
-  line-height: 22px; }
-
-#feature-wrapper p a {
-  color: #5f85b0; }
-
-#feature-wrapper p a:hover {
-  color: #5f85b0;
-  text-decoration: underline; }
-
-.feature-image {
-  float: right;
-  clear: none;
-  position: relative;
-  margin: 0 75px 0 0; }
-
+/* =BUTTONS
+---------------------------------------- */
 .call-to-action {
   padding: 10px 20px;
   border: none;
@@ -128,7 +142,8 @@
   float: left;
   margin: 10px 0 0 0; }
 
-/* RESPONSIVE CONTROL */
+/* =RESPONSIVE CONTROL
+---------------------------------------- */
 @media screen and (max-width: 900px) {
   #feature-container {
     width: 700px;

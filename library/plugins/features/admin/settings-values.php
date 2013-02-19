@@ -33,6 +33,13 @@ $rt_feat_settings = array(
 			'type' => 'checkbox',
 			'default' => false,
 		),
+		'text_display' => array (
+			'name' => 'text_display',
+			'label' => 'Text Display Type:',
+			'type' => 'radio',
+			'default' => 'flat',
+			'choices' => array('flat', 'box', 'none')
+		),
 		'text_color' => array(
 			'name' => 'text_color',
 			'label' => 'Text Color:',
