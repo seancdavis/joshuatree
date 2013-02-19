@@ -92,9 +92,10 @@ jQuery(document).ready(function($) {
 		$("#feature-container-" + previous).css('z-index','10');
 		
 		// sliding animation
-		$("#feature-container-" + position).css('left','100%'); // puts next feature in position (right side of screen)
-		$("#feature-container-" + position).animate({left: '-1%'},1000); // slides next feature into screen
-		$("#feature-container-" + previous).animate({left: '-101%',},1000); // slides previous feature out of screen (to left)
+		$("#feature-container-" + position).css('left','102%'); // puts next feature in position (right side of screen)
+		$("#feature-container-" + position).animate({left: '0%'},1000); // slides next feature into screen
+		$("#feature-container-" + previous).animate({left: '-102%',},1000); // slides previous feature out of screen (to left)
+		setTimeout(function(){ $("#feature-container-" + previous).css('left', '101%') },1050);
 		
 	} // <-- END AUTO SLIDE
 	
@@ -187,9 +188,10 @@ jQuery(document).ready(function($) {
 			$("#feature-container-" + lastID).css('z-index','10');
 			
 			// animates the feature sliding
-			$("#feature-container-" + id).css('left','100%');		
-			$("#feature-container-" + id).animate({left: '-1%'},1000);
-			$("#feature-container-" + lastID).animate({left: '-101%',},1000);
+			$("#feature-container-" + id).css('left','102%');		
+			$("#feature-container-" + id).animate({left: '0%'},1000);
+			$("#feature-container-" + lastID).animate({left: '-102%',},1000);
+			setTimeout(function(){ $("#feature-container-" + lastID).css('left', '101%') },1050);
 			
 			// stores when click occured
 			oldTime = newTime;	
@@ -239,9 +241,10 @@ jQuery(document).ready(function($) {
 			$("#feature-container-" + lastID).css('z-index','10');
 			
 			// animates the feature sliding
-			$("#feature-container-" + id).css('left','-101%');		
-			$("#feature-container-" + id).animate({left: '-1%'},1000);
-			$("#feature-container-" + lastID).animate({left: '101%',},1000);
+			$("#feature-container-" + id).css('left','-102%');		
+			$("#feature-container-" + id).animate({left: '0%'},1000);
+			$("#feature-container-" + lastID).animate({left: '102%',},1000);
+			setTimeout(function(){ $("#feature-container-" + lastID).css('left', '101%') },1050);
 			
 			// stores when click occured
 			oldTime = newTime;	
@@ -272,7 +275,7 @@ jQuery(document).ready(function($) {
 			
 			for(j = 1; j < featureCount + 1; j++) {
 				if( j == 1 ) $("#feature-container-" + j).css('left','0');
-				else $("#feature-container-" + j).css('left','101%');	
+				else $("#feature-container-" + j).css('left','100%');	
 			}
 		}
 	} // <-- END RESIZING CONTROL

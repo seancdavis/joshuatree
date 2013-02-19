@@ -126,12 +126,10 @@ function get_feat_css() {
 			background-color: <?php echo $arrows_hover; ?>;			
 		}
 		#feature-move-left {
-			background-image: url(<?php echo get_template_directory_uri() . '/images/left-arrow-'.$arrows_color.'.png'; ?>);
+			background-image: url(<?php echo get_template_directory_uri() . '/images/icons/arrow-left-'.$arrows_color.'.png'; ?>);
 		}
 		#feature-move-right {
-			background-image: url(<?php echo get_template_directory_uri() . '/images/right-arrow-'.$arrows_color.'.png'; ?>);
-			<?php if( $slider_width == 'standard' ) echo 'left: 840px;'; 
-			else echo 'left: 95%;'; ?>
+			background-image: url(<?php echo get_template_directory_uri() . '/images/icons/arrow-right-'.$arrows_color.'.png'; ?>);
 		}
 	</style>
 <?php }
