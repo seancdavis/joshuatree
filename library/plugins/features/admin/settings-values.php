@@ -4,6 +4,15 @@ global $rt_feat_settings;
 
 $rt_feat_settings = array(
 	'throw_me_away' => array(), // my foreach loop was not picking up first key here. This keeps it running.
+	'feat_global_settings' => array(
+		'feature_type' => array(
+			'name' => 'feature_type',
+			'label' => 'Feature Type',
+			'type' => 'radio',
+			'default' => 'simple-slider',
+			'choices' => array('simple-slider', 'free-form')
+		),
+	),
 	'feat_container_settings' => array(
 		'slider_width' => array(
 			'name' => 'slider_width',
@@ -67,13 +76,6 @@ $rt_feat_settings = array(
 		)
 	),
 	'feat_slider_settings' => array(
-		'slide_group' => array(
-			'name' => 'slide_group',
-			'label' => 'Content slides...',
-			'type' => 'radio',
-			'default' => 'together',
-			'choices' => array('together', 'separate')
-		),
 		'counter_type' => array(
 			'name' => 'counter_type',
 			'label' => 'Counter Type:',

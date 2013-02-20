@@ -36,28 +36,6 @@ function rt_feature_options() {
 	<input type="checkbox" name="_disable_feature" value="1" <?php print $disable_feature_checked; ?> />
     <label for="_disable_feature"><i>Once published, the feature is active by default. Checking the box below will disable the feature, even if published.</i></label><?php
 	
-	/* SLIDING DIRECTION
-	------------------------------------------------------------------------- */
-	if( get_feat_option_value('slide_group') == 'separate' ) {
-		$img_slide = get_post_meta($post->ID, '_img_slide', true);
-		$text_slide = get_post_meta($post->ID, '_text_slide', true); 
-		if( $img_slide == '' ) $img_slide = 'top';
-		if( $text_slide == '' ) $text_slide = 'top'; ?>
-		
-		<h4 class="feature-sub-title">Image Slide Direction</h4>
-		<input type="radio" name="_img_slide" value="top" <?php if( $img_slide == 'top' ) echo 'checked="checked"'; ?> />&nbsp;<label>Top</label><br>
-		<input type="radio" name="_img_slide" value="right" <?php if( $img_slide == 'right' ) echo 'checked="checked"'; ?> />&nbsp;<label>Right</label><br>
-		<input type="radio" name="_img_slide" value="bottom" <?php if( $img_slide == 'bottom' ) echo 'checked="checked"'; ?> />&nbsp;<label>Bottom</label><br>
-		<input type="radio" name="_img_slide" value="left" <?php if( $img_slide == 'left' ) echo 'checked="checked"'; ?> />&nbsp;<label>Left</label><br>
-		
-		<h4 class="feature-sub-title">Text Slide Direction</h4>
-		<input type="radio" name="_text_slide" value="top" <?php if( $text_slide == 'top' ) echo 'checked="checked"'; ?> />&nbsp;<label>Top</label><br>
-		<input type="radio" name="_text_slide" value="right" <?php if( $text_slide == 'right' ) echo 'checked="checked"'; ?> />&nbsp;<label>Right</label><br>
-		<input type="radio" name="_text_slide" value="bottom" <?php if( $text_slide == 'bottom' ) echo 'checked="checked"'; ?> />&nbsp;<label>Bottom</label><br>
-		<input type="radio" name="_text_slide" value="left" <?php if( $text_slide == 'left' ) echo 'checked="checked"'; ?> />&nbsp;<label>Left</label><br>
-		
-	<?php }
-	
 	/* BUTTON AND LINKS
 	------------------------------------------------------------------------- */
 	$button_text = get_post_meta($post->ID, '_button_text', true); 
@@ -102,8 +80,6 @@ function rt_save_feature_options_meta($post_id, $post) {
     if ( !current_user_can( 'edit_post', $post->ID ) ) return $post->ID;
 	
 	$feature_meta['_disable_feature'] = $_POST['_disable_feature'];
-	$feature_meta['_img_slide'] = $_POST['_img_slide'];
-	$feature_meta['_text_slide'] = $_POST['_text_slide'];
 	// This is used to sort the table on "All Features" admin page
 	if( $feature_meta['_disable_feature'] == '') $feature_meta['_disable_feature_key'] = 'Active'; 
 	else $feature_meta['_disable_feature_key'] = 'Disabled';

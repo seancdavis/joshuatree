@@ -6,6 +6,7 @@ To DO
 	√ Background color should only show if color/gradient are selected
 	- Add gradient option for background color
 	- Make building meta boxes dynamic
+	- Remove slide directions for now
 
 - Display Features
 	√ Break up display function so it is easy to get through by using reusable and messy functions outside the display function
@@ -14,6 +15,7 @@ To DO
 	- Get content sliding separate from background when appropriate setting is selected
 
 - Settings
+	- Create separate feature_type option and remove the slide_group option
 	- Clean up files - it doesn't work well with the way it is organized in three files right now
 	√ Add arguments array to display functions
 	- Add helper text where necessary
