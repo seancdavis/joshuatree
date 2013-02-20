@@ -20,6 +20,18 @@ jQuery(document).ready(function($) {
 
 	/* =SETUP
 	---------------------------------------------- */
+	
+	// slider settings
+	var sliderType = 'together';
+	if( $('#slide-type-control').length > 0 ) {
+		var imgSlide = new Array();
+		$('.img-slide').each(function(){ imgSlide.push( $(this).attr('value') ); });
+		var textSlide = new Array();
+		$('.text-slide').each(function(){ textSlide.push( $(this).attr('value') ); });
+		$('#slide-type-control').remove();
+		sliderType = 'separate';
+	}
+	
 	// Variable Setup
 	//counts number of features (requires class="feature-container")
 	var featureCount = $(".feature-container").length;	

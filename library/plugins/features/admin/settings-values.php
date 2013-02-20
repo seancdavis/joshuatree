@@ -17,7 +17,7 @@ $rt_feat_settings = array(
 			'label' => 'Background Type:',
 			'type' => 'radio',
 			'default' => 'color',
-			'choices' => array('color','gradient','none')
+			'choices' => array('color','gradient','transparent')
 		),
 		'bkg_color' => array(
 			'name' => 'bkg_color',
@@ -67,6 +67,13 @@ $rt_feat_settings = array(
 		)
 	),
 	'feat_slider_settings' => array(
+		'slide_group' => array(
+			'name' => 'slide_group',
+			'label' => 'Content slides...',
+			'type' => 'radio',
+			'default' => 'together',
+			'choices' => array('together', 'separate')
+		),
 		'counter_type' => array(
 			'name' => 'counter_type',
 			'label' => 'Counter Type:',

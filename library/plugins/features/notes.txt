@@ -1,21 +1,24 @@
 To DO
 -------------------
 - Meta Boxes
-	- Call to action section only shows if it is selected in the settings
-	- Ideally, call to action and URL share the same field
-	- Background color should only show if color/gradient are selected
+	√ Call to action section only shows if it is selected in the settings
+	√ Ideally, call to action and URL share the same field
+	√ Background color should only show if color/gradient are selected
 	- Add gradient option for background color
+	- Make building meta boxes dynamic
 
 - Display Features
-	- Break up display function so it is easy to get through by using reusable and messy functions outside the display function
-	- Add functionality for all settings and meta
-	- Tie back into one JS and one CSS file for displaying on site
+	√ Break up display function so it is easy to get through by using reusable and messy functions outside the display function
+	√ Add functionality for all settings and meta
+	√ Tie back into one JS and one CSS file for displaying on site
+	- Get content sliding separate from background when appropriate setting is selected
 
 - Settings
-	- Add arguments array to display functions
+	- Clean up files - it doesn't work well with the way it is organized in three files right now
+	√ Add arguments array to display functions
 	- Add helper text where necessary
 	- Add icon/image helpers where necessary
-	- Add tab/menu functionality
+	√ Add tab/menu functionality
 	
 - Re-Order Features
 	- user jQuery UI for drag and drop functionality
