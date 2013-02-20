@@ -53,7 +53,7 @@
 		
         <div id="main-menu-small-container"><?php do_action( 'get_main_menu_as_dropdown' ); //library/content/content.php ?></div>
         
-        <?php if( is_front_page() ) { do_action( 'display_feat_slider' ); /* library/plugins/display-feature.php */ } 
+        <?php if( is_front_page() ) { do_action( 'display_rt_feature' ); /* library/plugins/display-feature.php */ } 
 		else if( is_single() || is_page() ) { if( has_post_thumbnail() ) { do_action( 'feature_image' ); /* library/content/content.php */ } } ?>
         
 	</div>

@@ -142,20 +142,23 @@ function get_feat_bkg_color() {
 	return $feat_bkg;
 }
 
-add_action( 'display_feat_slider', 'display_feat_slider', 10, 1 );
-function display_feat_slider() {
+add_action( 'display_rt_feature', 'display_rt_feature' );
+function display_rt_feature() {
 	
 	$feature_type = get_feat_option_value('feature_type');
+	$simple_feature = 'simple-slider';
 	get_feat_css(); ?>		
 	<div id="feature-wrapper">
     	<div id="feature-container"><?php
-	$feature_counter = 1;
-	$loop = new WP_Query( array ( 'post_type' => 'rt_feature', 'orderby' => 'meta_value', 'order' => 'ASC', 'meta_key' => '_order', 'posts_per_page' => '10' ) );
-		while ( $loop->have_posts() ) : $loop->the_post();	
-			// feature must be active to be used
-			if( get_post_meta( get_the_ID(), '_disable_feature', true ) == 0 ) : 
+	
+		/* FEATURES LOOP
+		----------------------------------------------------------------- */
+		$feature_counter = 1;
+		$loop = new WP_Query( array ( 'post_type' => 'rt_feature', 'orderby' => 'meta_value', 'order' => 'ASC', 'meta_key' => '_order', 'posts_per_page' => '10' ) );
+		while ( $loop->have_posts() ) : $loop->the_post();			
+			if( get_post_meta( get_the_ID(), '_disable_feature', true ) == 0 ) : // feature must be active to be used 
 				$href = get_post_meta( get_the_ID(), '_linked_content', true ); ?>				
-				<div id="feature-container-<?php echo $feature_counter; ?>" class="feature-container" style="<?php echo get_feat_bkg_color(); ?>" ><?php  
+				<?php if( $feature_type == $simple_feature ) : ?><div id="feature-container-<?php echo $feature_counter; ?>" class="feature-container" style="<?php echo get_feat_bkg_color(); ?>" ><?php endif;  
 					the_post_thumbnail( 'full', array('class' => 'feature-image ' ) ); ?>					
 					<div class="feature-text-display-<?php echo get_feat_option_value('text_display'); ?>"><?php
 						the_title( '<h1 class="feature-title">', '</h1>' );
@@ -169,11 +172,13 @@ function display_feat_slider() {
 							<?php echo $button_text; ?>
 						</a>
 					<?php endif; ?>					
-				</div>		
-			<?php 
+				<?php if( $feature_type == $simple_feature ) : ?></div> <!-- END .feature-container --><?php endif;
 			$feature_counter++;		
 			endif;
-		endwhile;
+		endwhile; // <-- END features loop
+		
+		/* COUNTERS
+		----------------------------------------------------------------- */
 		$counter_type = get_feat_option_value('counter_type');
 		if( $counter_type != 'none' ) :
 			if( $counter_type == 'circles' ) $left_control = 50 - ( ( $feature_counter / 2 ) * 4 );
@@ -182,14 +187,19 @@ function display_feat_slider() {
 				<div id="feature-counter-<?php echo $i; ?>" class="feature-counter <?php echo $counter_type; ?>-counter" style="left:<?php echo $left_control; ?>%;"><?php if( $counter_type == 'numbers' ) echo $i; ?></div>
 				<?php $left_control = $left_control + 4;
 			}
-		endif;		
+		endif;
+		
+		/* ARROWS
+		----------------------------------------------------------------- */	
 		$arrows_type = get_feat_option_value('arrows_type'); 
 		if( $arrows_type != 'none' ) : ?>
 			<div class="feature-arrow feature-arrow-<?php echo $arrows_type; ?>" id="feature-move-left"></div>
 			<div class="feature-arrow feature-arrow-<?php echo $arrows_type; ?>" id="feature-move-right"></div>
 		<?php endif; ?>
-		</div>
-	</div><?php 
-} 
+		
+		</div> <!-- END #feature-container -->
+	</div> <!-- END .feature-wrapper -->
+	 
+<?php } 
 
 ?>
