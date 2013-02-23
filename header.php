@@ -44,8 +44,12 @@
     	<div id="social-icons-container" class="clearfix"><?php echo rt_get_social_icons(); // library/content/social-media.php ?></div>
         
         <div id="logo">        	
-            <h2><a href="<?php echo get_option('home'); ?>"><?php if( rt_get_option('rt_logo') != '' ) { echo '<img src="' . rt_get_option('rt_logo') . '" style="max-width: ' . rt_get_option('rt_logo_width') . 'px; max-height:' . rt_get_option('rt_logo_height') . 'px;" />'; }
-				else { bloginfo('name'); } ?></a></h2>
+            <?php if( rt_get_option('rt_logo') == '' ) : ?><h2><?php endif; ?>
+            	<a href="<?php echo get_option('home'); ?>">
+            		<?php if( rt_get_option('rt_logo') != '' ) { echo '<img src="' . rt_get_option('rt_logo') . '" style="max-width: ' . rt_get_option('rt_logo_width') . 'px; max-height:' . rt_get_option('rt_logo_height') . 'px;" />'; }
+					else { bloginfo('name'); } ?>
+				</a>
+			<?php if( rt_get_option('rt_logo') == '' ) : ?></h2><?php endif; ?>
         
   		<div id="main-menu" class="clearfix"><?php wp_nav_menu( array( 'sort_column' => 'menu_order', 'menu_class' => 'main-menu', 'theme_location' => 'primary-menu' ) ); ?></div>
 		
