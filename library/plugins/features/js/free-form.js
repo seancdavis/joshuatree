@@ -5,21 +5,10 @@
 jQuery(document).ready(function($) {
 
 	/* =SETUP
-	---------------------------------------------- */
-	// slider settings
-	var sliderType = 'together';
-	if( $('#slide-type-control').length > 0 ) {
-		var imgSlide = new Array();
-		$('.img-slide').each(function(){ imgSlide.push( $(this).attr('value') ); });
-		var textSlide = new Array();
-		$('.text-slide').each(function(){ textSlide.push( $(this).attr('value') ); });
-		$('#slide-type-control').remove();
-		sliderType = 'separate';
-	}
-	
+	---------------------------------------------- */	
 	// Variable Setup
 	//counts number of features (requires class="feature-container")
-	var featureCount = $(".feature-container").length;	
+	var featureCount = $(".feature-content").length;	
 	// init feature position
 	var position = 1;
 	var previous = featureCount;
@@ -29,19 +18,8 @@ jQuery(document).ready(function($) {
 	var clickDiff = 0;
 	var newTime = new Date();
 	
-	// Not sure if I still need this image resizing or not. needs further testing before deleting.
-	/*for(j = 1; j < (featureCount + 1); j++) {
-		
-		var height = $("#feature-container-" + j + " img").attr('height');
-		var width = $("#feature-container-" + j + " img").attr('width');
-		var ratio = width / height;
-		height = 250;
-		width = ratio * height;
-		
-		$("#feature-container-" + j + " img").attr('height', height);
-		$("#feature-container-" + j + " img").attr('width', width);
-		
-	}*/
+	var contentTop = '200px';
+	var imgTop = '50px';
 
 	// sets init selection as the first feature
 	// class="feature-counter-selected" enables the control counter color to be controlled via CSS	
@@ -54,7 +32,7 @@ jQuery(document).ready(function($) {
 	---------------------------------------------- */	
 	// sets the automatic slide only if the window is wider than 700px
 	if(window.innerWidth > 768 /* if the window isn't as wide as this, the auto slide will not begin */ ) { 
-		var featureInterval = setInterval(function() {autoSlide()},3000); // this number is the slide interval length (1/1000 sec)
+		var featureInterval = setInterval(function() {autoSlide()},3500); // this number is the slide interval length (1/1000 sec)
 	}
 	
 	function autoSlide() {
@@ -85,14 +63,50 @@ jQuery(document).ready(function($) {
 			previous++;
 		}
 		
-		$("#feature-container-" + position).css('z-index','20');
-		$("#feature-container-" + previous).css('z-index','10');
-		
 		// sliding animation
-		$("#feature-container-" + position).css('left','102%'); // puts next feature in position (right side of screen)
-		$("#feature-container-" + position).animate({left: '0%'},1000); // slides next feature into screen
-		$("#feature-container-" + previous).animate({left: '-102%',},1000); // slides previous feature out of screen (to left)
-		setTimeout(function(){ $("#feature-container-" + previous).css('left', '101%') },1050);
+		// positioning
+		$("#feature-content-" + position).css('top','400px'); // puts next feature in position (right side of screen)
+		$("#feature-content-" + previous).animate({
+				top: '-200px',
+			}, {
+				duration: 500,
+				specialEasing: {
+					top: 'easeInBack'
+				}
+			}
+		);
+		var imgHeight = $("#feature-img-" + position).height();
+		$("#feature-img-" + position).css('top','-' + imgHeight + 'px');
+		$("#feature-img-" + previous).animate({
+				top: '400px',
+			}, {
+				duration: 500,
+				specialEasing: {
+					top: 'easeInBack'
+				}
+			}
+		);
+		setTimeout(function(){
+			$("#feature-content-" + position).animate({
+					top: contentTop
+				}, {
+					duration: 500,
+					specialEasing: {
+						top: 'easeOutBack'
+					}
+				}
+			);
+			$("#feature-img-" + position).animate({
+					top: imgTop
+				}, {
+					duration: 500,
+					specialEasing: {
+						top: 'easeOutBack'
+					}
+				}
+			);
+		}, 500);
+		
 		
 	} // <-- END AUTO SLIDE
 	
@@ -181,14 +195,49 @@ jQuery(document).ready(function($) {
 				previous = position - 1;
 			}
 			
-			$("#feature-container-" + id).css('z-index','20');
-			$("#feature-container-" + lastID).css('z-index','10');
-			
-			// animates the feature sliding
-			$("#feature-container-" + id).css('left','102%');		
-			$("#feature-container-" + id).animate({left: '0%'},1000);
-			$("#feature-container-" + lastID).animate({left: '-102%',},1000);
-			setTimeout(function(){ $("#feature-container-" + lastID).css('left', '101%') },1050);
+			// sliding animation
+			// positioning
+			$("#feature-content-" + position).css('top','400px'); // puts next feature in position (right side of screen)
+			$("#feature-content-" + lastID).animate({
+					top: '-200px',
+				}, {
+					duration: 500,
+					specialEasing: {
+						top: 'easeInBack'
+					}
+				}
+			);
+			var imgHeight = $("#feature-img-" + position).height();
+			$("#feature-img-" + position).css('top','-' + imgHeight + 'px');
+			$("#feature-img-" + lastID).animate({
+					top: '400px',
+				}, {
+					duration: 500,
+					specialEasing: {
+						top: 'easeInBack'
+					}
+				}
+			);
+			setTimeout(function(){
+				$("#feature-content-" + position).animate({
+						top: contentTop
+					}, {
+						duration: 500,
+						specialEasing: {
+							top: 'easeOutBack'
+						}
+					}
+				);
+				$("#feature-img-" + position).animate({
+						top: imgTop
+					}, {
+						duration: 500,
+						specialEasing: {
+							top: 'easeOutBack'
+						}
+					}
+				);
+			}, 500);
 			
 			// stores when click occured
 			oldTime = newTime;	
@@ -234,14 +283,49 @@ jQuery(document).ready(function($) {
 				previous = position - 1;
 			}
 			
-			$("#feature-container-" + id).css('z-index','20');
-			$("#feature-container-" + lastID).css('z-index','10');
-			
-			// animates the feature sliding
-			$("#feature-container-" + id).css('left','-102%');		
-			$("#feature-container-" + id).animate({left: '0%'},1000);
-			$("#feature-container-" + lastID).animate({left: '102%',},1000);
-			setTimeout(function(){ $("#feature-container-" + lastID).css('left', '101%') },1050);
+			// sliding animation
+			// positioning
+			$("#feature-content-" + position).css('top','400px'); // puts next feature in position (right side of screen)
+			$("#feature-content-" + lastID).animate({
+					top: '-200px',
+				}, {
+					duration: 500,
+					specialEasing: {
+						top: 'easeInBack'
+					}
+				}
+			);
+			var imgHeight = $("#feature-img-" + position).height();
+			$("#feature-img-" + position).css('top','-' + imgHeight + 'px');
+			$("#feature-img-" + lastID).animate({
+					top: '400px',
+				}, {
+					duration: 500,
+					specialEasing: {
+						top: 'easeInBack'
+					}
+				}
+			);
+			setTimeout(function(){
+				$("#feature-content-" + position).animate({
+						top: contentTop
+					}, {
+						duration: 500,
+						specialEasing: {
+							top: 'easeOutBack'
+						}
+					}
+				);
+				$("#feature-img-" + position).animate({
+						top: imgTop
+					}, {
+						duration: 500,
+						specialEasing: {
+							top: 'easeOutBack'
+						}
+					}
+				);
+			}, 500);
 			
 			// stores when click occured
 			oldTime = newTime;	

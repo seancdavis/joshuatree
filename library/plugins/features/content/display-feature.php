@@ -12,7 +12,8 @@ function load_feature_script() {
 				wp_enqueue_script( 'feature-fw', get_template_directory_uri() . '/library/plugins/features/js/simple-slider.js', array('jquery') );
 				break;
 			case 'free-form' :
-				wp_enqueue_script( 'feature-fw', get_template_directory_uri() . '/library/plugins/features/js/free-form.js', array('jquery') );
+				wp_enqueue_script( 'jquery-easing', get_template_directory_uri() . '/library/plugins/features/js/jquery.easing.1.3.js', array('jquery') );
+				wp_enqueue_script( 'feature-fw', get_template_directory_uri() . '/library/plugins/features/js/free-form.js', array('jquery', 'jquery-easing') );
 				break;
 		}
 	}	
@@ -74,9 +75,12 @@ function get_css_gradient($bottom_color, $top_color = '') {
 function get_feat_css() {
 	
 	// define all option variables
+	$feature_type = get_feat_option_value('feature_type');
+	$free_form_feat = 'free-form';
 	$slider_width = get_feat_option_value('slider_width');
 	$bkg_type = get_feat_option_value('bkg_type');
 	$bkg_color = get_feat_option_value('bkg_color');
+	$box_bkg_color = hex2rgb( get_feat_option_value('box_bkg_color') );
 	$text_color = get_feat_option_value('text_color');
 	$button_bkg = get_feat_option_value('button_bkg_color');
 	if( $button_bkg == '#000' || $button_bkg == '#000000' ) $button_bkg = lighten_color($button_bkg, '1');
@@ -104,9 +108,38 @@ function get_feat_css() {
 		#feature-container {
 			width:<?php if( $slider_width == 'standard' ) echo '80%'; else echo '100%'; ?>
 		}
+		.feature-image {
+			<?php if( $feature_type == $free_form_feat ) : ?>
+				position: absolute;
+				right: 75px;
+				bottom: 400px;	
+			<?php endif; ?>
+		}
+		#feature-img-1 {
+			top: 50px;
+		}
+		.feature-content {
+			<?php if( $feature_type == $free_form_feat ) : ?>
+				position: absolute;
+				left: 100px;
+				top: 400px;
+			<?php endif; ?>
+		}
+		#feature-content-1 {
+			top: 200px;
+		}
+		.feature-text-display-box {
+			background-color: rgb( <?php echo $box_bkg_color[0].','.$box_bkg_color[1].','.$box_bkg_color[2]; ?>);
+			background-color: rgba( <?php echo $box_bkg_color[0].','.$box_bkg_color[1].','.$box_bkg_color[2].', 0.7'; ?>);
+		}
 		.call-to-action {
 			<?php echo get_css_gradient( $button_bkg, $button_bkg_gradient ); ?>
-			color: <?php echo $button_text; ?> !important;			
+			color: <?php echo $button_text; ?> !important;	
+			<?php if( $feature_type == $free_form_feat ) : ?>
+    			line-height: 40px;
+    			font-size: 12px;
+    			padding: 10px;
+    		<?php endif; ?>		
 		}
 		.call-to-action:hover {
 			<?php echo get_css_gradient( $button_bkg_gradient, $button_bkg ); ?>
@@ -167,20 +200,20 @@ function display_rt_feature() {
 			if( get_post_meta( get_the_ID(), '_disable_feature', true ) == 0 ) : // feature must be active to be used 
 				$href = get_post_meta( get_the_ID(), '_linked_content', true ); ?>				
 				<?php if( $feature_type == $simple_feature ) : ?><div id="feature-container-<?php echo $feature_counter; ?>" class="feature-container" style="<?php echo get_feat_bkg_color(); ?>" ><?php endif;  
-					the_post_thumbnail( 'full', array('class' => 'feature-image ' ) ); ?>					
-					<div class="feature-text-display-<?php echo get_feat_option_value('text_display'); ?>"><?php
+					the_post_thumbnail( 'full', array('class' => 'feature-image', 'id' => 'feature-img-'.$feature_counter ) ); ?>					
+					<div id="feature-content-<?php echo $feature_counter; ?>" class="feature-text-display-<?php echo get_feat_option_value('text_display'); ?> feature-content"><?php
 						the_title( '<h1 class="feature-title">', '</h1>' );
-						the_content(); ?>
-					</div><?php
-					// call to action button					
-					if( get_feat_option_value('linked_content') == 'button' && $href != '' ) :
-						if( get_post_meta( get_the_ID(), '_link_new_window', true ) == true ) $target = '_blank'; else $target ='_self';
-						$button_text = get_post_meta( get_the_ID(), '_button_text', true ); ?>
-						<a class="call-to-action rt-button" href="<?php echo $href; ?>" target="<?php echo $target; ?>">
-							<?php echo $button_text; ?>
-						</a>
-					<?php endif; ?>					
-				<?php if( $feature_type == $simple_feature ) : ?></div> <!-- END .feature-container --><?php endif;
+						the_content();
+						// call to action button					
+						if( get_feat_option_value('linked_content') == 'button' && $href != '' ) :
+							if( get_post_meta( get_the_ID(), '_link_new_window', true ) == true ) $target = '_blank'; else $target ='_self';
+							$button_text = get_post_meta( get_the_ID(), '_button_text', true ); ?>
+							<a class="call-to-action rt-button" href="<?php echo $href; ?>" target="<?php echo $target; ?>">
+								<?php echo $button_text; ?>
+							</a>
+						<?php endif; ?>
+					</div><?php					
+				if( $feature_type == $simple_feature ) : ?></div> <!-- END .feature-container --><?php endif;
 			$feature_counter++;		
 			endif;
 		endwhile; // <-- END features loop
@@ -190,7 +223,7 @@ function display_rt_feature() {
 		$counter_type = get_feat_option_value('counter_type');
 		if( $counter_type != 'none' ) :
 			if( $counter_type == 'circles' ) $left_control = 50 - ( ( $feature_counter / 2 ) * 4 );
-			else $left_control = 0;
+			else $left_control = 4;
 			for( $i = 1; $i < $feature_counter; $i++ ) { ?>
 				<div id="feature-counter-<?php echo $i; ?>" class="feature-counter <?php echo $counter_type; ?>-counter" style="left:<?php echo $left_control; ?>%;"><?php if( $counter_type == 'numbers' ) echo $i; ?></div>
 				<?php $left_control = $left_control + 4;

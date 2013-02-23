@@ -49,17 +49,18 @@ Table of Contents
     .feature-container p a:hover {
       text-decoration: underline; }
   .feature-container .feature-text-display-box {
-    border: 1px solid white;
-    width: 200px;
-    padding: 10px;
-    position: absolute;
-    bottom: 75px; }
+    width: 300px;
+    padding: 10px; }
     .feature-container .feature-text-display-box h1 {
       font-size: 14px;
       margin: 10px 0; }
     .feature-container .feature-text-display-box p {
       font-size: 13px;
       line-height: 16px; }
+
+.feature-text-display-box {
+  padding: 20px;
+  width: 300px; }
 
 #feature-container-1 {
   left: 0%; }
@@ -146,9 +147,8 @@ Table of Contents
   border: none;
   font-size: 16px;
   border: none;
-  clear: both;
-  float: left;
-  margin: 10px 0 0 0; }
+  margin: 10px 0;
+  line-height: 40px; }
 
 /* =RESPONSIVE CONTROL
 ---------------------------------------- */

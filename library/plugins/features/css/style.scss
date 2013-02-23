@@ -71,11 +71,8 @@ Table of Contents
     
   }
   .feature-text-display-box {
-    border: 1px solid #FFFFFF;
-    width: 200px;
+    width: 300px;
     padding: 10px;
-    position: absolute;
-    bottom: 75px;
     h1 {
      font-size: 14px; 
      margin: 10px 0;
@@ -85,6 +82,11 @@ Table of Contents
       line-height: 16px;
     }
   }
+}
+
+.feature-text-display-box {
+  padding: 20px;
+  width: 300px;
 }
 
 #feature-container-1 {
@@ -177,10 +179,10 @@ Table of Contents
   border: none;
   font-size: 16px;
   border: none;
-  clear: both;
-  float: left;
-  margin: 10px 0 0 0;
+  margin: 10px 0;
+  line-height: 40px;
 }
+
 
 /* =RESPONSIVE CONTROL
 ---------------------------------------- */
