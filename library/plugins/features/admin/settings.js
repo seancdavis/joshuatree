@@ -18,10 +18,28 @@ jQuery(document).ready(function($) {
 		$('#feat_nav_control').attr('value', id);
 	});	
 	$('#tab_').hide();
-	//alert( $('#checkbox-bkg_color_lock').attr('checked') );
+	
+	/* Customized Page Elements
+	------------------------------------------------------ */
+	//  backgorund lock
 	if( $('#checkbox-bkg_color_lock').attr('checked') == undefined ) $('#label-bkg_color_lock').hide();
 	$('#checkbox-bkg_color_lock').click(function(){
 		if( $('#checkbox-bkg_color_lock').attr('checked') == undefined ) $('#label-bkg_color_lock').hide();
 		else $('#label-bkg_color_lock').show();
-	});	
+	});
+	
+	buttonPreview();
+	$('#preview-button_text_color .call-to-action').click(function(){
+		buttonPreview();
+	});
+	
+	function buttonPreview() {
+		var buttonBkg = $('#color-button_bkg_color').attr('value');
+		var buttonText = $('#color-button_text_color').attr('value');
+		$('#preview-button_text_color .call-to-action').css({
+			'background-color': buttonBkg,
+			'color': buttonText
+		});
+	}	
+	
 });

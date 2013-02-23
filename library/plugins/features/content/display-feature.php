@@ -91,9 +91,7 @@ function get_feat_css() {
 	$active_bkg = get_feat_option_value('active_counter_color');
 	$hover_bkg = get_feat_option_value('hover_counter_color');
 	$counter_border = get_feat_option_value('counter_border_color');
-	$inactive_text = get_feat_option_value('inactive_counter_text_color');
-	$active_text = get_feat_option_value('active_counter_text_color');
-	$hover_text = get_feat_option_value('hover_counter_text_color');
+	$counter_text = get_feat_option_value('counter_text_color');
 	$arrows_type = get_feat_option_value('arrows_type');
 	$arrows_color = get_feat_option_value('arrows_color'); 
 	$arrows_bkg = get_feat_option_value('arrows_bkg_color');
@@ -146,16 +144,14 @@ function get_feat_css() {
 		}
 		.feature-counter {
 			background-color: <?php echo $inactive_bkg; ?>;
-			color: <?php echo $inactive_text; ?>;
+			color: <?php echo $counter_text; ?>;
 			border: 3px solid <?php echo $counter_border; ?>;
 		}
 		.feature-counter:hover {
 			background-color: <?php echo $hover_bkg; ?>;
-			color: <?php echo $hover_text; ?>;
 		}
 		.feature-counter-selected {
 			background-color: <?php echo $active_bkg; ?>;
-			color: <?php echo $active_text; ?>;
 		}
 		.feature-counter-selected:hover {
 			background-color: <?php echo $active_bkg; ?>;

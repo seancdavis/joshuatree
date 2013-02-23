@@ -90,84 +90,82 @@ $rt_feat_settings = array(
 			'label' => 'Button Text Color:',
 			'type' => 'color',
 			'default' => '#fff',
+			'after' => '<div id="preview-button_text_color"><a class="call-to-action">Click to Preview</a></div><p style="clear:both;"><i>Please note: This preview is meant as a color comparison. Gradients and hover effects are not shown here.</i></p>'
 		)
 	),
 	'feat_slider_settings' => array(
 		'counter_type' => array(
 			'name' => 'counter_type',
-			'label' => 'Counter Type:',
+			'label' => 'Feature Counter Type:',
 			'type' => 'radio',
 			'default' => 'circles',
-			'choices' => array('circles', 'numbers', 'none')
+			'choices' => array('circles', 'numbers', 'none'),
+			'choice_labels' => array('Circles', 'Numbers', 'No Counters'),
+			'after' => '<p><i>Show the number of features and enable users to jump to a particular feature</i></p>'
 		),
 		'inactive_counter_color' => array(
 			'name' => 'inactive_counter_color',
-			'label' => 'Inactive Counter Color:',
+			'label' => 'Counter Background Color - <b>STANDARD</b>:',
 			'type' => 'color',
 			'default' => '#fff'
 		),
 		'active_counter_color' => array(
 			'name' => 'active_counter_color',
-			'label' => 'Active Counter Color:',
+			'label' => 'Counter Background Color - <b>ACTIVE</b>:',
 			'type' => 'color',
-			'default' => '#000'
+			'default' => '#000',
+			'after' => '<p><i>The background color of the counter corresponding to the feature currently being displayed.</i></p>'
 		),
 		'hover_counter_color' => array(
 			'name' => 'hover_counter_color',
-			'label' => 'Hover Counter Color:',
+			'label' => 'Counter Background Color - <b>HOVER EFFECT</b>:',
 			'type' => 'color',
 			'default' => '#000'
+		),
+		'counter_text_color' => array(
+			'name' => 'counter_text_color',
+			'label' => 'Counter Text Color (if necessary):',
+			'type' => 'color',
+			'default' => '#000',
+			'after' => '<p><i>Only applies if you have selected Numbers counter type.</i></p>'
 		),
 		'counter_border_color' => array(
 			'name' => 'counter_border_color',
-			'label' => 'Counter Border Color',
+			'label' => 'Counter <b>Border</b> Color',
 			'type' => 'color',
 			'default' => '#ccc',
-		),
-		'inactive_counter_text_color' => array(
-			'name' => 'inactive_counter_text_color',
-			'label' => 'Inactive Counter TEXT Color:',
-			'type' => 'color',
-			'default' => '#000'
-		),
-		'active_counter_text_color' => array(
-			'name' => 'active_counter_text_color',
-			'label' => 'Active Counter TEXT Color:',
-			'type' => 'color',
-			'default' => '#fff'
-		),
-		'hover_counter_text_color' => array(
-			'name' => 'hover_counter_text_color',
-			'label' => 'Hover Counter TEXT Color:',
-			'type' => 'color',
-			'default' => '#fff'
 		),
 		'arrows_type' => array(
 			'name' => 'arrows_type',
 			'label' => 'Arrows Type',
 			'type' => 'radio',
 			'default' => 'small',
-			'choices' => array('small', 'full-height', 'none')
+			'choices' => array('small', 'full-height', 'none'),
+			'choice_labels' => array('Normal', 'Full Height', 'No Arrows'),
+			'after' => '<p><i>Arrows enable your visitors to toggle through your features one at a time. The type here refers to the height of the backgorund. </i></p>'
 		),
 		'arrows_color' => array(
 			'name' => 'arrows_color',
 			'label' => 'Arrows Color',
 			'type' => 'radio',
 			'default' => 'white',
-			'choices' => array('white', 'grey', 'black')
+			'choices' => array('white', 'grey', 'black'),
+			'choice_labels' => array('White', 'Grey (50%)', 'Black'),
+			'after' => '<p><i>Color of the arrow itself. These are the only options since the arrow in an image.</i></p>'
 		),
 		'arrows_bkg_color' => array(
 			'name' => 'arrows_bkg_color',
 			'label' => 'Arrows Background Color',
 			'type' => 'color',
 			'default' => '',
-			'after' => '<p><i>Leaving this blank will make the background transparent.</i></p>'
+			'after' => '<p><i>Leaving this blank will make the background transparent.</p><p>Please note: if you chose Full Height, your background will be semi-transparent.</i></p>'
 		),
 		'arrows_hover_color' => array(
 			'name' => 'arrows_hover_color',
-			'label' => 'Arrows Hover Color',
+			'label' => 'Arrows Hover Effect',
 			'type' => 'color',
 			'default' => '#000',
+			'after'=> '<p><i>Changes the <b>background</b> of the arrow on hover.</i></p>'
 		),
 	)
 );

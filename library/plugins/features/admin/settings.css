@@ -32,3 +32,16 @@
 .feature-settings-section-selected {
 	display: block;
 }
+
+.call-to-action {
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  border: none;
+  margin: 10px 0;
+  float: left;
+}
+
+.call-to-action:hover {
+	cursor: pointer;
+}
