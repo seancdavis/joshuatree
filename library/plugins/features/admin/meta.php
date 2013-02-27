@@ -36,6 +36,7 @@ function rt_feature_options() {
 	<input type="checkbox" name="_disable_feature" value="1" <?php print $disable_feature_checked; ?> />
     <label for="_disable_feature"><i>Once published, the feature is active by default. Checking the box below will disable the feature, even if published.</i></label><?php
 	
+	
 	/* BUTTON AND LINKS
 	------------------------------------------------------------------------- */
 	$button_text = get_post_meta($post->ID, '_button_text', true); 
@@ -50,10 +51,23 @@ function rt_feature_options() {
 	<?php }
 	if( $opt_linked_content == 'content' || $opt_linked_content == 'button' ) { ?>
 		    <label for="_linked_content">URL:</label>
-			<input type="text" name="_linked_content" value="<?php echo $linked_content; ?>" size="50" />
+			<input id="_linked_content" type="text" name="_linked_content" value="<?php echo $linked_content; ?>" size="50" />
 		    <input type="checkbox" name="_link_new_window" value="1" <?php if($link_new_window == 1) echo 'checked="checked"'; ?> />
 			<label for="_link_new_window">Open link in new window</label>
 	<?php }	
+	
+	// loop existing pages and posts
+	$loop = new WP_Query( array ( 'post_type' => array( 'post', 'page' ), 'orderby' => 'title', 'order' => 'ASC', 'posts_per_page' => 100 ) ); ?>
+	<p class="show-existing-content-list">Or click to choose from existing content...</p>
+	<uL class="existing-content-list"><?php
+		while ( $loop->have_posts() ) : $loop->the_post(); ?>		
+			<li id="<?php echo get_permalink(); ?>" class="existing-content-item">
+				<span class="existing-content-link-title"><?php echo the_title(); ?></span>
+				<span class="existing-content-post-type"><?php echo strtoupper( get_post_type() ); ?></span>
+			</li><?php
+			// the_title( '<li id="'.get_permalink().'">', ' ('.get_post_type().')</li>' );
+		endwhile; ?>
+	</ul><?php
 	
 	/* BACKGROUND COLOR
 	------------------------------------------------------------------------- */

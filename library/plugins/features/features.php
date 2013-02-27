@@ -30,10 +30,11 @@ function load_rt_feat_reorder_options() {
 }
 
 // Load POST META scripts
-if( $_GET['post_type'] == 'rt_feature' ) add_action( 'admin_enqueue_scripts', 'load_feat_meta' );	
+if( $_GET['action'] == 'edit' ) add_action( 'admin_enqueue_scripts', 'load_feat_meta' );	
 function load_feat_meta() {
 	$rt_feat_dir = get_template_directory_uri() . '/library/plugins/features';
 	wp_enqueue_style( 'feature-meta', $rt_feat_dir . '/admin/meta.css' );
+	wp_enqueue_script('feature-meta', $rt_feat_dir . '/admin/meta.js', array('jquery') );
 }
 
 ?>
