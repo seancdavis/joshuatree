@@ -20,6 +20,8 @@ jQuery(document).ready(function($) {
 	
 	var contentTop = '200px';
 	var imgTop = '50px';
+	
+	var autoToggle = 'on';
 
 	// sets init selection as the first feature
 	// class="feature-counter-selected" enables the control counter color to be controlled via CSS	
@@ -32,7 +34,7 @@ jQuery(document).ready(function($) {
 	---------------------------------------------- */	
 	// sets the automatic slide only if the window is wider than 700px
 	if(window.innerWidth > 768 /* if the window isn't as wide as this, the auto slide will not begin */ ) { 
-		var featureInterval = setInterval(function() {autoSlide()},3500); // this number is the slide interval length (1/1000 sec)
+		var featureInterval = setInterval(function() {autoSlide()},4500); // this number is the slide interval length (1/1000 sec)
 	}
 	
 	function autoSlide() {
@@ -115,23 +117,25 @@ jQuery(document).ready(function($) {
 	---------------------------------------------- */
 	$("#feature-move-right").click(function() {
 		
-		if( position == featureCount ) {			
-			slideLeft(1);			
+		if( autoToggle == 'on' ) {
+			setTimeout(function(){ 
+				slideLeft(next);
+			}, 400);
+			autoToggle = 'off';	
 		}
-		else {
-			slideLeft(next);
-		}
+		else slideLeft(next);
 		
 	});
 	
 	$("#feature-move-left").click(function() {
 		
-		if( position == 1 ) {			
-			slideRight(featureCount);			
+		if( autoToggle == 'on' ) {
+			setTimeout(function(){
+				slideRight(previous);
+			}, 400);
+			autoToggle = 'off';	
 		}
-		else {
-			slideRight(previous);
-		}
+		else slideRight(previous);
 		
 	});
 	
@@ -142,17 +146,13 @@ jQuery(document).ready(function($) {
 		var id = $(this).attr('id');		
 		var id = id.substr(id.length - 1);
 		
-		slideLeft(id);
-		
-	});
-	
-	// this function is needed to ensure the first control counter can be clicked
-	$(".feature-counter-selected").click(function() {
-		
-		var id = $(this).attr('id');		
-		var id = id.substr(id.length - 1);
-		
-		slideLeft(id);
+		if( autoToggle == 'on' ) {
+			setTimeout(function(){
+				slideLeft(id);
+			}, 400);
+			autoToggle = 'off';	
+		}
+		else slideLeft(id);
 		
 	});
 	
@@ -269,13 +269,13 @@ jQuery(document).ready(function($) {
 			// controls order of features
 			if(id == 1) {
 				position = id;
-				next = 1;
-				previous = position - 1;
-			}
-			else if(id == 1) {
-				position = 1;
 				next = 2;
 				previous = featureCount;
+			}
+			else if(id == featureCount) {
+				position = id;
+				next = 1;
+				previous = position - 1;
 			}
 			else {
 				position = id;

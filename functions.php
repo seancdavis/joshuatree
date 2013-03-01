@@ -2,6 +2,8 @@
  
 /* Load Necessary PHP Files
 -------------------------------------------------------------------------------- */
+add_filter( 'show_admin_bar', '__return_false' );
+
 add_action( 'rocktree_init', 'rocktree_load_functions' );
 
 function rocktree_load_functions() {

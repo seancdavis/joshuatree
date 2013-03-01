@@ -14,7 +14,7 @@ Release Date: not released
 TABLE OF CONTENTS
 ---------------------------------------
 =GLOBAL
-	-Variables/Mixins
+	-Sass Control
 	-Elements
 	-Clearfix
 =GENERAL LAYOUT
@@ -32,7 +32,7 @@ TABLE OF CONTENTS
 /* --------------------------------------
 	=GLOBAL 
 ---------------------------------------*/
-/*	-Variables/Mixins
+/*	-Sass Control
 ----------------------*/
 /* Colors */
 /*	-Elements
@@ -124,7 +124,7 @@ html[xmlns] .clearfix {
   background-color: transparent;
   width: 80%;
   padding: 0;
-  margin: auto; }
+  margin: 100px auto; }
 
 #full-width-container {
   width: 100%; }
@@ -217,11 +217,17 @@ html[xmlns] .clearfix {
     background-color: gray; }
 
 #logo {
-  width: 80%;
-  margin: auto; }
-  #logo h2, #logo img {
-    float: left;
-    padding: 20px 0; }
+  position: absolute;
+  left: 10%;
+  background: #cccccc;
+  padding: 10px;
+  z-index: 9999999999;
+  -moz-box-shadow: 1px 1px 5px #333333;
+  /* Firefox */
+  -webkit-box-shadow: 1px 1px 5px #333333;
+  /* Safari, Chrome */
+  box-shadow: 1px 1px 5px #333333;
+  /* CSS3 */ }
 
 #feature-image-container {
   width: 100%;
@@ -243,22 +249,31 @@ html[xmlns] .clearfix {
   text-align: center; }
 
 #main-menu {
-  background-color: transparent;
+  background-color: #4d4d4d;
   display: block;
   position: relative;
   padding: 0;
-  float: right; }
+  float: left;
+  width: 100%;
+  -moz-box-shadow: 1px 1px 5px #333333;
+  /* Firefox */
+  -webkit-box-shadow: 1px 1px 5px #333333;
+  /* Safari, Chrome */
+  box-shadow: 1px 1px 5px #333333;
+  /* CSS3 */
+  z-index: 100; }
   #main-menu li a:hover {
-    background: #f2f2f2; }
+    background: #009b77;
+    color: white; }
   #main-menu ul ul li a:hover {
     border-top: none;
-    background: gray;
+    background: #009b77;
     color: white !important; }
 
 .main-menu {
   list-style: none;
-  float: left;
-  margin: 0;
+  float: right;
+  margin: 0 75px 0 0;
   padding: 0; }
   .main-menu li {
     float: left;
@@ -266,24 +281,26 @@ html[xmlns] .clearfix {
   .main-menu a {
     display: block;
     text-decoration: none;
-    color: #009b77;
+    color: #999999;
     font-size: 15px;
-    padding: 20px 30px;
-    border-bottom: 1px solid #cccccc; }
+    padding: 20px 30px; }
   .main-menu ul {
     position: absolute;
     z-index: 99999;
     list-style-type: none;
     margin: 0;
-    display: none; }
+    display: none;
+    -moz-box-shadow: 1px 1px 5px #333333;
+    /* Firefox */
+    -webkit-box-shadow: 1px 1px 5px #333333;
+    /* Safari, Chrome */
+    box-shadow: 1px 1px 5px #333333;
+    /* CSS3 */ }
   .main-menu ul li {
     min-width: 175px; }
   .main-menu ul li a, .main-menu ul ul li a {
     padding: 10px;
-    border-top: none;
-    border-bottom: none;
-    background: #009b77;
-    color: #f2f2f2 !important;
+    background-color: #4d4d4d;
     font-size: 12px;
     font-weight: normal; }
   .main-menu ul ul {
@@ -366,11 +383,11 @@ html[xmlns] .clearfix {
   font-size: 11px;
   color: #999999;
   background: #4d4d4d;
-  -moz-box-shadow: 3px -3px 5px #cccccc;
+  -moz-box-shadow: 1px -1px 5px #333333;
   /* Firefox */
-  -webkit-box-shadow: 3px -3px 5px #cccccc;
+  -webkit-box-shadow: 1px -1px 5px #333333;
   /* Safari, Chrome */
-  box-shadow: 3px -3px 5px #cccccc;
+  box-shadow: 1px -1px 5px #333333;
   /* CSS3 */ }
 
 .footer-widget {

@@ -6,7 +6,7 @@
 		
 			<div id="site-info">
 				<span id="copyright">&copy; 2013 <a href="<?php echo get_option( 'home' )?>"><?php bloginfo('name'); ?></a> | All Rights Reserved.</span>
-				<span id="theme-designer">Joshua Tree theme by <a href="http://thepolymathlab.com" target="_blank">rocktree Design</a></span>
+				<span id="theme-designer">Joshua Tree theme by <a href="http://rocktreedesign.com" target="_blank">rocktree Design</a></span>
 			</div>
         
     </div>

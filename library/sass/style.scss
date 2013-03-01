@@ -5,7 +5,7 @@
 TABLE OF CONTENTS
 ---------------------------------------
 =GLOBAL
-	-Variables/Mixins
+	-Sass Control
 	-Elements
 	-Clearfix
 =GENERAL LAYOUT
@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 	=GLOBAL 
 ---------------------------------------*/
 
-/*	-Variables/Mixins
+/*	-Sass Control
 ----------------------*/
 /* Colors */
 $primary: #000000;
@@ -184,7 +184,7 @@ html[xmlns] .clearfix {
 	background-color: transparent;
 	width: 80%;
 	padding: 0;
-	margin: auto;
+	margin: 100px auto;
 }
 
 #full-width-container {
@@ -277,12 +277,12 @@ html[xmlns] .clearfix {
 }
 
 #logo {
-	width: 80%;
-	margin: auto;
-	h2, img {
-		float: left;
-		padding: 20px 0;
-	}
+  position: absolute;
+  left: 10%;
+  background: lighten($primary, 80%);
+  padding: 10px;
+  z-index: 9999999999;
+  @include shadow(1px, 1px, 5px, lighten($primary, 20%));
 }
 
 #feature-image-container {
@@ -309,25 +309,29 @@ html[xmlns] .clearfix {
 }
 
 #main-menu {
-	background-color: transparent;
+	background-color: lighten($primary, 30%);
 	display: block;
 	position: relative;
 	padding: 0;
-	float: right;
+	float: left;
+	width: 100%;
+	@include shadow( 1px, 1px, 5px, lighten($primary, 20%) );
+	z-index: 100;
 	li a:hover {
-		background: lighten($primary, 95%); 
+		background: $accent-1;
+		color: lighten($primary, 100%); 
 	}
 	ul ul li a:hover {
 		border-top: none;
-		background: lighten($primary, 50%);
+		background: $accent-1;
 		color: lighten($primary, 100%) !important;
 	}
 }
  
 .main-menu {
 	list-style: none;
-	float: left;
-	margin: 0;
+	float: right;
+	margin: 0 75px 0 0;
 	padding: 0;
 	li {
 		float: left;
@@ -336,10 +340,9 @@ html[xmlns] .clearfix {
 	a {
 		display: block;
 		text-decoration :none;
-		color: $accent-1;
+		color: lighten($primary, 60%);
 		font-size: 15px; 
 		padding: 20px 30px;
-		border-bottom: 1px solid lighten($primary, 80%);
 	}
 	ul {
 		position: absolute;
@@ -347,16 +350,14 @@ html[xmlns] .clearfix {
 		list-style-type: none;
 		margin: 0;
 		display: none;
+		@include shadow( 1px, 1px, 5px, lighten($primary, 20%) );
 	}
 	ul li {
 		min-width: 175px;
 	}
 	ul li a, ul ul li a {
 		padding: 10px;
-		border-top: none;
-		border-bottom: none;
-		background: $accent-1;
-		color: lighten($primary, 95%) !important;
+		background-color: lighten($primary, 30%);
 		font-size: 12px;
 		font-weight: normal;
 	}
@@ -459,7 +460,7 @@ html[xmlns] .clearfix {
 	font-size: 11px;
 	color: lighten($primary, 60%);
 	background: lighten($primary, 30%);
-	@include shadow(3px, -3px, 5px);
+	@include shadow(1px, -1px, 5px, lighten($primary, 20%));
 }
 
 .footer-widget {
