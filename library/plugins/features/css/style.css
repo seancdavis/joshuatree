@@ -151,6 +151,8 @@ Table of Contents
   border: none;
   margin: 10px 0;
   line-height: 40px; }
+  .call-to-action:hover {
+    text-decoration: none; }
 
 /* =RESPONSIVE CONTROL
 ---------------------------------------- */

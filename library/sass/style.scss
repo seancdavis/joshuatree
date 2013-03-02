@@ -317,15 +317,9 @@ html[xmlns] .clearfix {
 	width: 100%;
 	@include shadow( 1px, 1px, 5px, lighten($primary, 20%) );
 	z-index: 100;
-	li a:hover {
-		background: $accent-1;
-		color: lighten($primary, 100%); 
-	}
-	ul ul li a:hover {
-		border-top: none;
-		background: $accent-1;
-		color: lighten($primary, 100%) !important;
-	}
+  li a:hover, ul ul li a:hover {
+		background: $accent-1; 
+  }
 }
  
 .main-menu {
@@ -339,7 +333,7 @@ html[xmlns] .clearfix {
 	}
 	a {
 		display: block;
-		text-decoration :none;
+		text-decoration: none;
 		color: lighten($primary, 60%);
 		font-size: 15px; 
 		padding: 20px 30px;
@@ -351,13 +345,13 @@ html[xmlns] .clearfix {
 		margin: 0;
 		display: none;
 		@include shadow( 1px, 1px, 5px, lighten($primary, 20%) );
+		background: lighten($primary, 30%);
 	}
 	ul li {
 		min-width: 175px;
 	}
 	ul li a, ul ul li a {
 		padding: 10px;
-		background-color: lighten($primary, 30%);
 		font-size: 12px;
 		font-weight: normal;
 	}
@@ -370,9 +364,15 @@ html[xmlns] .clearfix {
 	}
 }
 
-.current-menu-item a {
-	background: #f2f2f2; 
-	border-bottom: 1px solid #1C4B11;
+.current-menu-item {
+	ul li a {
+	  color: lighten($primary, 60%);
+	  background: lighten($primary, 30%);
+  }
+  a {
+    background: $accent-1;
+    color: lighten($primary, 100%);
+  }
 }
 
 .sub-menu {

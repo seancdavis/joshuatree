@@ -183,6 +183,9 @@ Table of Contents
   border: none;
   margin: 10px 0;
   line-height: 40px;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 

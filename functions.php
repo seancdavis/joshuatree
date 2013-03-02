@@ -83,8 +83,7 @@ do_action( 'rocktree_init' );
 // Animation of main menu
 add_action( 'wp_enqueue_scripts', 'load_main_menu_scripts' );	
 function load_main_menu_scripts() {
-	wp_enqueue_script('hover-control', get_template_directory_uri() . '/library/js/hover-control.js',array('jquery') );
-	wp_enqueue_script('footer', get_template_directory_uri() . '/library/js/footer.js',array('jquery') );
+	wp_enqueue_script('footer', get_template_directory_uri() . '/library/js/footer.js',array('jquery') ); // footer styling finally seems to be working --> kill after testing
 	wp_enqueue_script('main-menu', get_template_directory_uri() . '/library/js/main-menu.js',array('jquery') );
 	wp_enqueue_script('shortcodes', get_template_directory_uri() . '/library/js/shortcodes.js',array('jquery') );
 	wp_enqueue_script( 'jquery-validate', 'http://jzaefferer.github.com/jquery-validation/jquery.validate.js', array('jquery') );

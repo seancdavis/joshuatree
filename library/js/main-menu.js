@@ -22,6 +22,40 @@ jQuery(document).ready(function($){
 		}
 	}
 	
+	$('.main-menu li').hover(function(){
+		$(this).children('a').css('color','#FFFFFF');
+	}, function(){
+		$(this).children('a').css('color','#999999');
+		$('.current-menu-item').children('a').css('color','#FFFFFF');
+	});
+	
+	$('.main-menu li ul').hover(function(){
+		$(this).parent().css('background','#009b77');
+		$(this).parent().children('a').css('color','#FFFFFF');
+	}, function(){
+		$(this).parent().css('background','none');
+		$(this).parent().children('a').css('color','#999999');
+		$(this).parent('.current-menu-item').children('a').css('color','#FFFFFF');
+	});
+	
+	/*
+	$('#main-menu li ul').hover(function(){
+		var id = $(this).parent().attr('id');
+		$(this).parent('#'+id).css('background','#009b77');
+		$('#'+id+' a').css('color','#FFFFFF');
+		$('#'+id+' ul li a').css('color','#999999');
+	}, function(){
+		var id = $(this).parent().attr('id');
+		$(this).parent('#'+id).css('background','none');
+		$('#'+id+' a').css('color','#999999');
+	});
+	
+	$('#main-menu li a').hover(function(){
+		$(this).css('color','#FFFFFF');
+	}, function(){
+		$(this).css('color','#999999');
+	});
+	*/
 	// when main menu is shown as dropdown, this makes a selection of a menu item act as a click on a link.	
 	if( $('#main-menu-small').length > 0 ) {
 		$('#main-menu-small').change(function() {		
