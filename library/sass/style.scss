@@ -262,7 +262,6 @@ html[xmlns] .clearfix {
 	padding: 0 5%;
 	height: 44px;
 	z-index: 150;	
-	@include shadow();
 	background: lighten($primary, 20%);
 	img {
 		width: 24px;

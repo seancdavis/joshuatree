@@ -69,7 +69,7 @@ Table of Contents
   float: right;
   clear: none;
   position: relative;
-  margin: 0 75px 0 0;
+  margin: 0;
   height: 250px;
   width: auto; }
 
@@ -169,7 +169,7 @@ Table of Contents
     width: 100%;
     left: 0; }
 
-  .feature-counter, .feature-counter-selected, .move-arrow {
+  .feature-counter, .feature-counter-selected, .feature-arrow {
     display: none; }
 
   .feature-container {
@@ -177,4 +177,13 @@ Table of Contents
     position: relative;
     left: 0px;
     z-index: 0;
-    padding-bottom: 50px; } }
+    padding-bottom: 50px; }
+
+  .feature-content {
+    display: block;
+    position: relative;
+    top: 0;
+    width: 100%; }
+
+  .feature-image {
+    display: none; } }

@@ -193,12 +193,6 @@ html[xmlns] .clearfix {
   padding: 0 5%;
   height: 44px;
   z-index: 150;
-  -moz-box-shadow: 3px 3px 5px #cccccc;
-  /* Firefox */
-  -webkit-box-shadow: 3px 3px 5px #cccccc;
-  /* Safari, Chrome */
-  box-shadow: 3px 3px 5px #cccccc;
-  /* CSS3 */
   background: #333333; }
   #social-icons-container img {
     width: 24px;

@@ -18,7 +18,7 @@ jQuery(document).ready(function($) {
 	var clickDiff = 0;
 	var newTime = new Date();
 	
-	var contentTop = '200px';
+	var contentTop = '175px';
 	var imgTop = '50px';
 	
 	var autoToggle = 'on';
@@ -35,6 +35,15 @@ jQuery(document).ready(function($) {
 	// sets the automatic slide only if the window is wider than 700px
 	if(window.innerWidth > 768 /* if the window isn't as wide as this, the auto slide will not begin */ ) { 
 		var featureInterval = setInterval(function() {autoSlide()},4500); // this number is the slide interval length (1/1000 sec)
+	}
+	else {
+		for(j = 1; j < featureCount + 1; j++) {
+			$("#feature-content-" + j).css({
+				'top':'0',
+				'left':'0',
+				'position':'relative',
+			});	
+		}
 	}
 	
 	function autoSlide() {
@@ -341,7 +350,11 @@ jQuery(document).ready(function($) {
 			window.clearInterval(featureInterval);
 			
 			for(j = 1; j < featureCount + 1; j++) {
-				$("#feature-container-" + j).css('left','0');	
+				$("#feature-content-" + j).css({
+					'top':'0',
+					'left':'0',
+					'position':'relative',
+				});	
 			}
 		}
 		else {
@@ -355,8 +368,9 @@ jQuery(document).ready(function($) {
 			next = 2;
 			
 			for(j = 1; j < featureCount + 1; j++) {
-				if( j == 1 ) $("#feature-container-" + j).css('left','0');
-				else $("#feature-container-" + j).css('left','100%');	
+				if( j == 1 ) $("#feature-content-" + j).css('top',contentTop);
+				else $("#feature-content-" + j).css('top','400px');
+				$("#feature-content-" + j).css('left','10%');	
 			}
 		}
 	} // <-- END RESIZING CONTROL

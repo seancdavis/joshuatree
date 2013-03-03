@@ -109,7 +109,7 @@ function get_feat_css() {
 		.feature-image {
 			<?php if( $feature_type == $free_form_feat ) : ?>
 				position: absolute;
-				right: 75px;
+				right: 10%;
 				bottom: 400px;	
 			<?php endif; ?>
 		}
@@ -119,12 +119,12 @@ function get_feat_css() {
 		.feature-content {
 			<?php if( $feature_type == $free_form_feat ) : ?>
 				position: absolute;
-				left: 100px;
+				left: 10%;
 				top: 400px;
 			<?php endif; ?>
 		}
 		#feature-content-1 {
-			top: 200px;
+			top: 175px;
 		}
 		.feature-text-display-box {
 			background-color: rgb( <?php echo $box_bkg_color[0].','.$box_bkg_color[1].','.$box_bkg_color[2]; ?>);

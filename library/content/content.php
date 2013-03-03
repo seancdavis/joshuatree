@@ -6,7 +6,7 @@ add_action( 'build_content', 'core_content_builder', 10, 2 );
 
 function core_content_builder($page) {
 	
-	get_header();
+	get_header();	
 	if( is_front_page() ) {
 		get_sidebar( 'front' );
 	}
