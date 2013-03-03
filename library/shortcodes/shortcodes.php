@@ -22,16 +22,17 @@ function build_tile_shortcode( $atts, $content = null ) {
 		'newline' => ''
 	), $atts ) );
 	
+	if( $newline == true ) $newline = 'style="clear:both;"';
+	
 	switch($type) {
 		
 		case 'icon' :
-			if( $newline == true ) $newline = 'style="clear:both;"';
 			return '<div class="tile-' . esc_attr($col) . ' rt-tile rt-tile-icon" '.$newline.'>' . do_shortcode($content) . '</div>';
 			break;
 			
 		case 'thumb' || 'thumbnail' :
-			if( $url != '' ) return '<a href="' . $url . '"><div class="tile-' . esc_attr($col) . ' rt-tile rt-tile-thumb">' . do_shortcode($content) . '</div></a>';
-			else return '<div class="tile-' . esc_attr($col) . ' rt-tile rt-tile-thumb">' . do_shortcode($content) . '</div>';
+			if( $url != '' ) return '<a href="' . $url . '"><div class="tile-' . esc_attr($col) . ' rt-tile rt-tile-thumb" '.$newline.'>' . do_shortcode($content) . '</div></a>';
+			else return '<div class="tile-' . esc_attr($col) . ' rt-tile rt-tile-thumb" '.$newline.'>' . do_shortcode($content) . '</div>';
 			break;
 			
 		case 'normal' :
