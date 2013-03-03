@@ -189,8 +189,8 @@ html[xmlns] .clearfix {
 
 #social-icons-container {
   float: left;
-  width: 80%;
-  padding: 0 10%;
+  width: 90%;
+  padding: 0 5%;
   height: 44px;
   z-index: 150;
   -moz-box-shadow: 3px 3px 5px #cccccc;
@@ -199,14 +199,7 @@ html[xmlns] .clearfix {
   /* Safari, Chrome */
   box-shadow: 3px 3px 5px #cccccc;
   /* CSS3 */
-  background-color: #404040;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#404040), to(black));
-  background-image: -webkit-linear-gradient(top, #404040, black);
-  background-image: -moz-linear-gradient(top, #404040, black);
-  background-image: -ms-linear-gradient(top, #404040, black);
-  background-image: -o-linear-gradient(top, #404040, black);
-  background-image: linear-gradient(top, #404040, black);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$top-color, endColorstr=$bottom-color, GradientType=0); }
+  background: #333333; }
   #social-icons-container img {
     width: 24px;
     height: 24px;
@@ -214,11 +207,11 @@ html[xmlns] .clearfix {
     background-color: transparent;
     float: right; }
   #social-icons-container a:hover > img {
-    background-color: gray; }
+    background-color: #009b77; }
 
 #logo {
   position: absolute;
-  left: 10%;
+  left: 2%;
   background: #cccccc;
   padding: 10px;
   z-index: 9999999999;
@@ -229,14 +222,11 @@ html[xmlns] .clearfix {
   box-shadow: 1px 1px 5px #333333;
   /* CSS3 */ }
 
-#feature-image-container {
+#feature-img-container {
   width: 100%;
-  height: 200px;
-  overflow: hidden;
-  text-align: center;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; }
+  text-align: center; }
+  #feature-img-container .feature-img {
+    width: 100%; }
 
 /* --------------------------------------
 	=MENUS 
@@ -244,7 +234,7 @@ html[xmlns] .clearfix {
 /*	-Main  
 ------------------*/
 #main-menu-small-container {
-  margin: 40px auto 20px auto;
+  margin: 0 auto 20px auto;
   display: none;
   text-align: center; }
 
@@ -265,11 +255,14 @@ html[xmlns] .clearfix {
   #main-menu li a:hover, #main-menu ul ul li a:hover {
     background: #009b77; }
 
+.menu-main-menu-container {
+  width: 90%;
+  margin: auto; }
+
 .main-menu {
   list-style: none;
   float: right;
-  margin: 0 75px 0 0;
-  padding: 0; }
+  margin: 0; }
   .main-menu li {
     float: left;
     position: relative; }
@@ -373,11 +366,11 @@ html[xmlns] .clearfix {
 /*	-Footer
 ------------------*/
 #footer-sidebar-container {
-  width: 80%;
-  margin: -2px 0;
+  width: 90%;
+  margin: 0 0 -2px 0;
   clear: both;
   position: relative;
-  padding: 0 10%;
+  padding: 0 5%;
   font-size: 11px;
   color: #999999;
   background: #4d4d4d;
@@ -392,6 +385,9 @@ html[xmlns] .clearfix {
   width: 30%;
   float: left;
   margin: 10px 1.5%; }
+  .footer-widget h2 {
+    font-size: 18px;
+    margin: 15px 0; }
   .footer-widget ul {
     margin: 0; }
   .footer-widget p {
@@ -404,6 +400,8 @@ html[xmlns] .clearfix {
     padding: 8px;
     border: 5px solid #666666;
     clear: both; }
+  .footer-widget .info-tile-img {
+    background: #cccccc; }
   .footer-widget ul li {
     line-height: 16px;
     font-size: 12px;
@@ -416,20 +414,16 @@ html[xmlns] .clearfix {
   .footer-widget ul li:last-child {
     border: none; }
 
-.footer-widget-title {
-  font-weight: normal;
-  font-size: 20px; }
-
 /* ---------------------------------------
 	=FOOTER
 ---------------------------------------*/
 #footer {
-  width: 80%;
+  width: 90%;
   margin: 0;
   clear: both;
   position: relative;
   float: left;
-  padding: 15px 10%;
+  padding: 15px 5%;
   line-height: 20px;
   -moz-box-shadow: 0 3px 5px #1a1a1a;
   /* Firefox */
@@ -464,9 +458,16 @@ html[xmlns] .clearfix {
     float: none; }
 
   #logo {
-    margin: 40px auto;
+    margin: 20px auto;
+    box-shadow: none;
+    left: 0;
     text-align: center;
-    clear: both; }
+    clear: both;
+    position: relative;
+    background: none; }
+
+  #container {
+    margin: 20px auto; }
 
   #main-menu-small-container {
     display: block; }
@@ -635,7 +636,7 @@ Contents
 /* icon-based tile */
 .rt-tile-icon {
   margin: 10px 2% 10px 0;
-  height: 250px; }
+  /*height: 250px;*/ }
   .rt-tile-icon p, .rt-tile-icon h1, .rt-tile-icon h2, .rt-tile-icon h3, .rt-tile-icon h4, .rt-tile-icon h5, .rt-tile-icon h6 {
     margin: 0 0 0 56px;
     padding: 0 0 0 10px;

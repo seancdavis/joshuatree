@@ -10,9 +10,18 @@ function core_content_builder($page) {
 	if( is_front_page() ) {
 		get_sidebar( 'front' );
 	}
-	else {
-	 
-		echo '<div id="container">';
+	else { ?>
+		
+		<div id="container" style="margin:<?php	
+			if( has_post_thumbnail() ) echo '0 auto';
+			else if( has_social_icons() ) echo '100px auto'; 
+			else echo '150px auto'; 
+		?>"><?php
+		
+		if( is_single() || is_page() && has_post_thumbnail() ) do_action( 'feature_image' );
+		
+		 
+		
 		
 		$post = $posts[0]; // Hack. Set $post so that the_date() works.
 		/* If this is a category archive */ 
@@ -175,9 +184,9 @@ add_action( 'feature_image', 'get_feature_image' );
 
 function get_feature_image() {
 	
-	$url = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
+	$url = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ); ?>
 	
-	echo '<div id="feature-image-container" style="background-image: url(' . $url . ' );" ></div>';    
+	<div id="feature-img-container"><img src="<?php echo $url; ?>" class="feature-img"></div><?php  
 
 }
 

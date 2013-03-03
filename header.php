@@ -40,8 +40,8 @@
 <div id="wrapper">
     
     <div id="header" class="clearfix">
-    
-    	<div id="social-icons-container" class="clearfix"><?php echo rt_get_social_icons(); // library/content/social-media.php ?></div>
+    	
+    	<?php echo rt_get_social_icons(); // library/content/social-media.php ?>
         
         <div id="main-menu" class="clearfix"><?php wp_nav_menu( array( 'sort_column' => 'menu_order', 'menu_class' => 'main-menu', 'theme_location' => 'primary-menu' ) ); ?></div>
         
@@ -58,7 +58,6 @@
 		
         <div id="main-menu-small-container"><?php do_action( 'get_main_menu_as_dropdown' ); //library/content/content.php ?></div>
         
-        <?php if( is_front_page() ) { do_action( 'display_rt_feature' ); /* library/plugins/display-feature.php */ } 
-		else if( is_single() || is_page() ) { if( has_post_thumbnail() ) { do_action( 'feature_image' ); /* library/content/content.php */ } } ?>
+        <?php if( is_front_page() ) do_action( 'display_rt_feature' ); /* library/plugins/display-feature.php */  ?>
         
 	</div>

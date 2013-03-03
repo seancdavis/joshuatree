@@ -258,12 +258,12 @@ html[xmlns] .clearfix {
 
 #social-icons-container {
 	float: left;
-	width: 80%;
-	padding: 0 10%;
+	width: 90%;
+	padding: 0 5%;
 	height: 44px;
 	z-index: 150;	
 	@include shadow();
-	@include gradient();	
+	background: lighten($primary, 20%);
 	img {
 		width: 24px;
 		height: 24px;
@@ -272,27 +272,25 @@ html[xmlns] .clearfix {
 		float: right;
 	}
 	a:hover > img {
-		background-color: lighten($primary, 50%);
+		background-color: $accent-1;
 	}
 }
 
 #logo {
   position: absolute;
-  left: 10%;
+  left: 2%;
   background: lighten($primary, 80%);
   padding: 10px;
   z-index: 9999999999;
   @include shadow(1px, 1px, 5px, lighten($primary, 20%));
 }
 
-#feature-image-container {
+#feature-img-container {
 	width: 100%;
-	height: 200px;
-	overflow: hidden;
 	text-align: center;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;	
+	.feature-img {
+	  width: 100%;
+	}	
 }
 
 
@@ -303,7 +301,7 @@ html[xmlns] .clearfix {
 /*	-Main  
 ------------------*/
 #main-menu-small-container {
-	margin: 40px auto 20px auto;
+	margin: 0 auto 20px auto;
 	display: none;
 	text-align: center;
 }
@@ -322,11 +320,15 @@ html[xmlns] .clearfix {
   }
 }
  
+.menu-main-menu-container {
+  width: 90%;
+  margin: auto;
+}
+ 
 .main-menu {
 	list-style: none;
 	float: right;
-	margin: 0 75px 0 0;
-	padding: 0;
+	margin: 0;
 	li {
 		float: left;
 		position: relative;
@@ -452,11 +454,11 @@ html[xmlns] .clearfix {
 /*	-Footer
 ------------------*/
 #footer-sidebar-container {
-	width: 80%;
-	margin: -2px 0;
+	width: 90%;
+	margin: 0 0 -2px 0;
 	clear: both;
 	position: relative;
-	padding: 0 10%;
+	padding: 0 5%;
 	font-size: 11px;
 	color: lighten($primary, 60%);
 	background: lighten($primary, 30%);
@@ -467,6 +469,10 @@ html[xmlns] .clearfix {
 	width: 30%;
 	float: left;
 	margin: 10px 1.5%;
+	h2 {
+	  font-size: 18px;
+	  margin: 15px 0;
+	}
 	ul {
 		margin: 0;
 	}
@@ -481,6 +487,9 @@ html[xmlns] .clearfix {
 		padding: 8px;
 		border: 5px solid lighten($primary, 40%);
 		clear: both;
+	}
+	.info-tile-img {
+	  background: lighten($primary, 80%);
 	}
 	ul li {
 		line-height: 16px;
@@ -498,21 +507,16 @@ html[xmlns] .clearfix {
 	}
 }
 
-.footer-widget-title {
-	font-weight: normal;
-	font-size: 20px;
-}
-
 /* ---------------------------------------
 	=FOOTER
 ---------------------------------------*/
 #footer {
-	width: 80%;
+	width: 90%;
 	margin: 0;
 	clear: both;
 	position: relative;	
 	float: left;
-	padding: 15px 10%;
+	padding: 15px 5%;
 	line-height: 20px;
 	@include shadow(0, 3px, 5px, lighten($primary, 10%) );
 	z-index: 10;
@@ -549,9 +553,17 @@ html[xmlns] .clearfix {
 	}
 	
 	#logo {
-		margin: 40px auto;
+		margin: 20px auto;
+		box-shadow: none;
+		left: 0;
 		text-align: center;
 		clear: both;
+		position: relative;
+		background: none;
+	}
+	
+	#container {
+	  margin: 20px auto;
 	}
 	
 	#main-menu-small-container {

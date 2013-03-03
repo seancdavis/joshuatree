@@ -19,13 +19,14 @@ function build_tile_shortcode( $atts, $content = null ) {
 		'type' => 'normal',
 		'col' => '1-2',
 		'url' => '',
-		'new_line' => false
+		'newline' => ''
 	), $atts ) );
 	
 	switch($type) {
 		
 		case 'icon' :
-			return '<div class="tile-' . esc_attr($col) . ' rt-tile rt-tile-icon">' . do_shortcode($content) . '</div>';
+			if( $newline == true ) $newline = 'style="clear:both;"';
+			return '<div class="tile-' . esc_attr($col) . ' rt-tile rt-tile-icon" '.$newline.'>' . do_shortcode($content) . '</div>';
 			break;
 			
 		case 'thumb' || 'thumbnail' :

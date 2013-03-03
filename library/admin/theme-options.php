@@ -25,6 +25,7 @@ function rt_get_option( $option_name ) {
 		'rt_logo' => '',
 		'rt_logo_width' => '200',
 		'rt_logo_height' => '200',
+		'rt_email' => '',
 		'rt_facebook' => '',
 		'rt_twitter' => '',
 		'rt_linkedin' => '',
@@ -163,7 +164,8 @@ function rt_admin_init(){
 	
 	/* Social Settings (rt_social)
 	-------------------------------- */
-	add_settings_section( 'rt_social', 'Social Settings', 'rt_section_social', 'rt_social_options' );	
+	add_settings_section( 'rt_social', 'Social Settings', 'rt_section_social', 'rt_social_options' );
+	add_settings_field('rt_email', 'Email', 'rt_field_email', 'rt_social_options', 'rt_social');	
 	add_settings_field('rt_facebook', 'Facebook', 'rt_field_facebook', 'rt_social_options', 'rt_social');
 	add_settings_field('rt_twitter', 'Twitter', 'rt_field_twitter', 'rt_social_options', 'rt_social');
 	add_settings_field('rt_linkedin', 'LinkedIn', 'rt_field_linkedin', 'rt_social_options', 'rt_social');
@@ -319,6 +321,10 @@ function rt_section_social() {
 	_e( '<p>Insert the URL of your social sites to show social icons linked to your profiles.</p>' );
 }
 
+function rt_field_email() {
+	?><input id='rt_email' name='rt_options[rt_email]' size='60' type='text' value="<?php echo rt_get_option( 'rt_email' ); ?>" /><?php	
+}
+
 function rt_field_facebook() {
 	_e( "<input id='rt_facebook' name='rt_options[rt_facebook]' size='60' type='text' value='" . rt_get_option( 'rt_facebook' ) . "' />" );	
 }
@@ -371,6 +377,7 @@ function rt_validate_options($input) {
 		
 	
 	// Social Settings
+	$input['rt_email'] = sanitize_text_field( $input['rt_email'] );
 	$input['rt_facebook'] = sanitize_text_field( $input['rt_facebook'] );
 	$input['rt_twitter'] = sanitize_text_field( $input['rt_twitter'] );
 	$input['rt_linkedin'] = sanitize_text_field( $input['rt_linkedin'] );
