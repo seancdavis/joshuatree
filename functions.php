@@ -14,6 +14,7 @@ function rocktree_load_functions() {
 	// admin
 	require_once( RT_LIBRARY_DIR . '/admin/theme-options.php' );
 	require_once( RT_LIBRARY_DIR . '/admin/page-meta.php' );
+	require_once( RT_LIBRARY_DIR . '/admin/theme-update-checker.php' );
 	
 	// content
 	require_once( RT_LIBRARY_DIR . '/content/content.php' );
@@ -109,13 +110,10 @@ function load_widgets() {
 	register_widget( 'Twitter_Feed' );
 }
 
-//Initialize the update checker.
-/*
-require get_template_directory() . '/library/admin/theme-update-checker.php';
+//Initialize the update checker
 $example_update_checker = new ThemeUpdateChecker(
-    'buckeye',
-    'http://thepolymathlab.com/theme-updates/buckeye-theme-update-checker.json'
+    'joshuatree',
+    'http://wp-themes.rocktreedesign.com/joshuatree/update-control.json'
 );
-*/
 
 ?>
