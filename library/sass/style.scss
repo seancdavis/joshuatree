@@ -41,7 +41,7 @@ $error: #CC0000;
 	background-image: -ms-linear-gradient(top, $top-color, $bottom-color);
 	background-image: -o-linear-gradient(top, $top-color, $bottom-color);
 	background-image: linear-gradient(top, $top-color, $bottom-color);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$top-color, endColorstr=$bottom-color, GradientType=0);
+	filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr="+$top-color+", endColorstr="+$bottom-color+", GradientType=0)";
 }
 
 @mixin shadow( $x-val: 3px, $y-val: 3px, $blur: 5px, $color: $shadow ) {
@@ -287,7 +287,7 @@ html[xmlns] .clearfix {
 #feature-img-container {
 	width: 100%;
 	text-align: center;
-	margin: -2px 0 0 0;
+	margin: -8px 0 0 0;
 	.feature-img {
 	  width: 100%;
 	}	
@@ -458,7 +458,7 @@ html[xmlns] .clearfix {
 	margin: 0 0 -2px 0;
 	clear: both;
 	position: relative;
-	padding: 0 5%;
+	padding: 0 5% 10px 5%;
 	font-size: 11px;
 	color: lighten($primary, 60%);
 	background: lighten($primary, 30%);
@@ -512,7 +512,7 @@ html[xmlns] .clearfix {
 ---------------------------------------*/
 #footer {
 	width: 90%;
-	margin: 0;
+	margin: -8px 0 0 0;
 	clear: both;
 	position: relative;	
 	float: left;

@@ -23,7 +23,7 @@ Table of Contents
   margin: -2px 0; }
 
 #feature-container {
-  margin: auto;
+  margin: -5px auto 0 auto;
   position: relative;
   overflow: hidden;
   height: 400px; }
